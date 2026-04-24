@@ -1,0 +1,18 @@
+# VeloRay extra configuration.
+
+[command-bridge]
+# Enables the /veloray cmd <server> <command> bridge.
+enabled = false
+
+# Timeouts in milliseconds for connecting to backend RCON.
+connect-timeout = 3000
+read-timeout = 3000
+
+[command-bridge.servers]
+# Configure one entry per backend server name from velocity.toml.
+#
+# Example:
+# [command-bridge.servers.survival]
+# host = "127.0.0.1"
+# port = 25575
+# password = "change-me"
