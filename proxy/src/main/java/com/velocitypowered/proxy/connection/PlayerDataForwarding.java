@@ -15,26 +15,25 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection;
+package com.velocitypowered.proxy.connection;
 
-import static com.raytolfas.veloray.proxy.VelocityServer.GENERAL_GSON;
+import static com.velocitypowered.proxy.VelocityServer.GENERAL_GSON;
 
 import com.google.common.collect.ImmutableList;
 import com.velocitypowered.api.network.ProtocolVersion;
 import com.velocitypowered.api.proxy.crypto.IdentifiedKey;
 import com.velocitypowered.api.util.GameProfile;
-import com.raytolfas.veloray.proxy.protocol.ProtocolUtils;
+import com.velocitypowered.proxy.protocol.ProtocolUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 import java.util.function.UnaryOperator;
+import java.util.List;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import org.jspecify.annotations.Nullable;
-
 @SuppressWarnings({"MissingJavadocMethod", "MissingJavadocType"})
 public final class PlayerDataForwarding {
   private static final String ALGORITHM = "HmacSHA256";

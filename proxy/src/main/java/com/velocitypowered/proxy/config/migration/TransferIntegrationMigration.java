@@ -15,11 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.config.migration;
+package com.velocitypowered.proxy.config.migration;
 
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import org.apache.logging.log4j.Logger;
-
 /**
  * Creation of the configuration option "accepts-transfers".
  */

@@ -15,14 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.adventure;
+package com.velocitypowered.proxy.adventure;
 
 import com.google.auto.service.AutoService;
 import java.util.UUID;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.event.ClickCallback;
 import net.kyori.adventure.text.event.ClickEvent;
-
 /**
  * Implementation of {@link ClickCallback.Provider}.
  */

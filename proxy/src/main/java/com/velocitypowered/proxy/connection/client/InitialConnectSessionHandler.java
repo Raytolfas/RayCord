@@ -15,20 +15,19 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.client;
+package com.velocitypowered.proxy.connection.client;
 
 import com.velocitypowered.api.event.connection.PluginMessageEvent;
 import com.velocitypowered.api.proxy.messages.ChannelIdentifier;
-import com.raytolfas.veloray.proxy.VelocityServer;
-import com.raytolfas.veloray.proxy.connection.MinecraftSessionHandler;
-import com.raytolfas.veloray.proxy.connection.backend.BungeeCordMessageResponder;
-import com.raytolfas.veloray.proxy.connection.backend.VelocityServerConnection;
-import com.raytolfas.veloray.proxy.protocol.packet.PluginMessagePacket;
+import com.velocitypowered.proxy.connection.backend.BungeeCordMessageResponder;
+import com.velocitypowered.proxy.connection.backend.VelocityServerConnection;
+import com.velocitypowered.proxy.connection.MinecraftSessionHandler;
+import com.velocitypowered.proxy.protocol.packet.PluginMessagePacket;
+import com.velocitypowered.proxy.VelocityServer;
 import io.netty.buffer.ByteBufUtil;
 import io.netty.buffer.Unpooled;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+import org.apache.logging.log4j.LogManager;
 /**
  * Handles the play state between exiting the login phase and establishing the first connection
  * to a backend server.

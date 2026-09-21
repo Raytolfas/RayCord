@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet.chat;
+package com.velocitypowered.proxy.protocol.packet.chat;
 
 public enum ChatType {
   CHAT((byte) 0),

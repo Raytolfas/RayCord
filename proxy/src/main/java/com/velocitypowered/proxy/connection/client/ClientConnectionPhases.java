@@ -15,12 +15,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.client;
+package com.velocitypowered.proxy.connection.client;
 
 /**
  * The vanilla {@link ClientConnectionPhase}s.
  *
- * <p>See {@link com.raytolfas.veloray.proxy.connection.forge.legacy.LegacyForgeHandshakeClientPhase}
+ * <p>See {@link com.velocitypowered.proxy.connection.forge.legacy.LegacyForgeHandshakeClientPhase}
  * for Legacy Forge phases</p>
  */
 public final class ClientConnectionPhases {

@@ -1,0 +1,14 @@
+# RayCord AntiBot module.
+
+enabled = true
+
+max-connections-per-window = 8
+connection-window-seconds = 20
+ban-duration-seconds = 300
+verification-timeout-seconds = 10
+cleanup-interval-seconds = 2
+
+blocked-message = "<red>Too many connections from your IP. Try again in %seconds_left%s."
+verification-timeout-message = "<red>Connection verification timed out."
+
+log-actions = true

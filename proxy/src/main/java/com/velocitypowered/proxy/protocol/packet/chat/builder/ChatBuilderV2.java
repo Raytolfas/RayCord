@@ -15,19 +15,18 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet.chat.builder;
+package com.velocitypowered.proxy.protocol.packet.chat.builder;
 
 import com.velocitypowered.api.network.ProtocolVersion;
 import com.velocitypowered.api.proxy.Player;
-import com.raytolfas.veloray.proxy.protocol.MinecraftPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.ChatType;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.LastSeenMessages;
+import com.velocitypowered.proxy.protocol.MinecraftPacket;
+import com.velocitypowered.proxy.protocol.packet.chat.ChatType;
+import com.velocitypowered.proxy.protocol.packet.chat.LastSeenMessages;
 import java.time.Instant;
 import net.kyori.adventure.identity.Identity;
 import net.kyori.adventure.text.Component;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 public abstract class ChatBuilderV2 {
 
   protected final ProtocolVersion version;

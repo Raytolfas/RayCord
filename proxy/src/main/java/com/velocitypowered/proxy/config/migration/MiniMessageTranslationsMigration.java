@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.config.migration;
+package com.velocitypowered.proxy.config.migration;
 
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import java.io.IOException;
@@ -27,7 +27,6 @@ import java.util.regex.Pattern;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.apache.logging.log4j.Logger;
-
 /**
  * Migration from old to modern language argument format with MiniMessage.
  * Also migrates possible use of legacy colors to MiniMessage format.

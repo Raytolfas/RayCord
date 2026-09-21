@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.util;
+package com.velocitypowered.proxy.util;
 
 /**
  * Utilities for handling characters in the context of Minecraft chat handling.
@@ -29,7 +29,7 @@ public final class CharacterUtil {
    * @return true if the character is allowed
    */
   public static boolean isAllowedCharacter(char c) {
-    // 167 = §, 127 = DEL
+    // 167 = В§, 127 = DEL
     // https://minecraft.wiki/w/Chat
     return c != 167 && c >= ' ' && c != 127;
   }

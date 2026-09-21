@@ -15,12 +15,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.player.resourcepack.handler;
+package com.velocitypowered.proxy.connection.player.resourcepack.handler;
 
 import com.velocitypowered.api.event.player.PlayerResourcePackStatusEvent;
-import com.raytolfas.veloray.proxy.VelocityServer;
-import com.raytolfas.veloray.proxy.connection.client.ConnectedPlayer;
-
+import com.velocitypowered.proxy.connection.client.ConnectedPlayer;
+import com.velocitypowered.proxy.VelocityServer;
 /**
  * Legacy (Minecraft 1.17-1.20.2) ResourcePackHandler.
  */

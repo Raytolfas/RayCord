@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.backend;
+package com.velocitypowered.proxy.connection.backend;
 
 import com.velocitypowered.api.event.connection.PluginMessageEvent;
 import com.velocitypowered.api.event.connection.PreTransferEvent;
@@ -27,46 +27,45 @@ import com.velocitypowered.api.event.player.ServerResourcePackSendEvent;
 import com.velocitypowered.api.network.ProtocolVersion;
 import com.velocitypowered.api.proxy.messages.ChannelIdentifier;
 import com.velocitypowered.api.proxy.player.ResourcePackInfo;
-import com.raytolfas.veloray.proxy.VelocityServer;
-import com.raytolfas.veloray.proxy.connection.MinecraftConnection;
-import com.raytolfas.veloray.proxy.connection.MinecraftSessionHandler;
-import com.raytolfas.veloray.proxy.connection.client.ClientConfigSessionHandler;
-import com.raytolfas.veloray.proxy.connection.client.ConnectedPlayer;
-import com.raytolfas.veloray.proxy.connection.player.resourcepack.VelocityResourcePackInfo;
-import com.raytolfas.veloray.proxy.connection.player.resourcepack.handler.ResourcePackHandler;
-import com.raytolfas.veloray.proxy.connection.util.ConnectionMessages;
-import com.raytolfas.veloray.proxy.connection.util.ConnectionRequestResults;
-import com.raytolfas.veloray.proxy.connection.util.ConnectionRequestResults.Impl;
-import com.raytolfas.veloray.proxy.protocol.MinecraftPacket;
-import com.raytolfas.veloray.proxy.protocol.StateRegistry;
-import com.raytolfas.veloray.proxy.protocol.netty.MinecraftDecoder;
-import com.raytolfas.veloray.proxy.protocol.netty.MinecraftVarintFrameDecoder;
-import com.raytolfas.veloray.proxy.protocol.packet.ClientboundCookieRequestPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.ClientboundStoreCookiePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.DisconnectPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.KeepAlivePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.PluginMessagePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.RemoveResourcePackPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.ResourcePackRequestPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.ResourcePackResponsePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.TransferPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.config.ClientboundCustomReportDetailsPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.config.ClientboundServerLinksPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.config.CodeOfConductPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.config.FinishedUpdatePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.config.RegistrySyncPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.config.StartUpdatePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.config.TagsUpdatePacket;
-import com.raytolfas.veloray.proxy.protocol.util.PluginMessageUtil;
+import com.velocitypowered.proxy.connection.client.ClientConfigSessionHandler;
+import com.velocitypowered.proxy.connection.client.ConnectedPlayer;
+import com.velocitypowered.proxy.connection.MinecraftConnection;
+import com.velocitypowered.proxy.connection.MinecraftSessionHandler;
+import com.velocitypowered.proxy.connection.player.resourcepack.handler.ResourcePackHandler;
+import com.velocitypowered.proxy.connection.player.resourcepack.VelocityResourcePackInfo;
+import com.velocitypowered.proxy.connection.util.ConnectionMessages;
+import com.velocitypowered.proxy.connection.util.ConnectionRequestResults.Impl;
+import com.velocitypowered.proxy.connection.util.ConnectionRequestResults;
+import com.velocitypowered.proxy.protocol.MinecraftPacket;
+import com.velocitypowered.proxy.protocol.netty.MinecraftDecoder;
+import com.velocitypowered.proxy.protocol.netty.MinecraftVarintFrameDecoder;
+import com.velocitypowered.proxy.protocol.packet.ClientboundCookieRequestPacket;
+import com.velocitypowered.proxy.protocol.packet.ClientboundStoreCookiePacket;
+import com.velocitypowered.proxy.protocol.packet.config.ClientboundCustomReportDetailsPacket;
+import com.velocitypowered.proxy.protocol.packet.config.ClientboundServerLinksPacket;
+import com.velocitypowered.proxy.protocol.packet.config.CodeOfConductPacket;
+import com.velocitypowered.proxy.protocol.packet.config.FinishedUpdatePacket;
+import com.velocitypowered.proxy.protocol.packet.config.RegistrySyncPacket;
+import com.velocitypowered.proxy.protocol.packet.config.StartUpdatePacket;
+import com.velocitypowered.proxy.protocol.packet.config.TagsUpdatePacket;
+import com.velocitypowered.proxy.protocol.packet.DisconnectPacket;
+import com.velocitypowered.proxy.protocol.packet.KeepAlivePacket;
+import com.velocitypowered.proxy.protocol.packet.PluginMessagePacket;
+import com.velocitypowered.proxy.protocol.packet.RemoveResourcePackPacket;
+import com.velocitypowered.proxy.protocol.packet.ResourcePackRequestPacket;
+import com.velocitypowered.proxy.protocol.packet.ResourcePackResponsePacket;
+import com.velocitypowered.proxy.protocol.packet.TransferPacket;
+import com.velocitypowered.proxy.protocol.StateRegistry;
+import com.velocitypowered.proxy.protocol.util.PluginMessageUtil;
+import com.velocitypowered.proxy.VelocityServer;
 import io.netty.buffer.ByteBufUtil;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import java.net.InetSocketAddress;
 import java.util.concurrent.CompletableFuture;
 import net.kyori.adventure.key.Key;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+import org.apache.logging.log4j.LogManager;
 /**
  * A special session handler that catches "last minute" disconnects. This version is to accommodate
  * 1.20.2+ switching. Yes, some of this is exceptionally stupid.

@@ -15,14 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.network;
+package com.velocitypowered.proxy.network;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
 import java.util.function.Supplier;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+import org.apache.logging.log4j.LogManager;
 /**
  * Backend channel initializer holder.
  */

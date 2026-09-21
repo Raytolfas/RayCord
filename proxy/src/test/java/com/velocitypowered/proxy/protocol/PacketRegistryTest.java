@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol;
+package com.velocitypowered.proxy.protocol;
 
 import static com.google.common.collect.Iterables.getLast;
 import static com.velocitypowered.api.network.ProtocolVersion.MINECRAFT_1_11;
@@ -36,10 +36,9 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.velocitypowered.api.network.ProtocolVersion;
-import com.raytolfas.veloray.proxy.protocol.packet.HandshakePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.StatusPingPacket;
+import com.velocitypowered.proxy.protocol.packet.HandshakePacket;
+import com.velocitypowered.proxy.protocol.packet.StatusPingPacket;
 import org.junit.jupiter.api.Test;
-
 class PacketRegistryTest {
 
   private StateRegistry.PacketRegistry setupRegistry() {

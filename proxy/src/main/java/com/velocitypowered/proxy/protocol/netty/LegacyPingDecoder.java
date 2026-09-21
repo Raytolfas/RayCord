@@ -15,20 +15,19 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.netty;
+package com.velocitypowered.proxy.protocol.netty;
 
-import static com.raytolfas.veloray.proxy.protocol.util.NettyPreconditions.checkFrame;
+import static com.velocitypowered.proxy.protocol.util.NettyPreconditions.checkFrame;
 
-import com.raytolfas.veloray.proxy.protocol.packet.LegacyHandshakePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.LegacyPingPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.legacyping.LegacyMinecraftPingVersion;
+import com.velocitypowered.proxy.protocol.packet.LegacyHandshakePacket;
+import com.velocitypowered.proxy.protocol.packet.legacyping.LegacyMinecraftPingVersion;
+import com.velocitypowered.proxy.protocol.packet.LegacyPingPacket;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-
 /**
  * Decodes Minecraft 1.3-1.6.4 server ping requests.
  */

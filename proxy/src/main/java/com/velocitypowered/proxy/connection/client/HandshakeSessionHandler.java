@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.client;
+package com.velocitypowered.proxy.connection.client;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
@@ -23,22 +23,22 @@ import com.velocitypowered.api.event.connection.ConnectionHandshakeEvent;
 import com.velocitypowered.api.network.HandshakeIntent;
 import com.velocitypowered.api.network.ProtocolState;
 import com.velocitypowered.api.network.ProtocolVersion;
-import com.raytolfas.veloray.proxy.VelocityServer;
-import com.raytolfas.veloray.proxy.config.PlayerInfoForwarding;
-import com.raytolfas.veloray.proxy.connection.ConnectionType;
-import com.raytolfas.veloray.proxy.connection.ConnectionTypes;
-import com.raytolfas.veloray.proxy.connection.MinecraftConnection;
-import com.raytolfas.veloray.proxy.connection.MinecraftSessionHandler;
-import com.raytolfas.veloray.proxy.connection.forge.legacy.LegacyForgeConstants;
-import com.raytolfas.veloray.proxy.connection.forge.modern.ModernForgeConnectionType;
-import com.raytolfas.veloray.proxy.connection.forge.modern.ModernForgeConstants;
-import com.raytolfas.veloray.proxy.connection.util.VelocityInboundConnection;
-import com.raytolfas.veloray.proxy.protocol.MinecraftPacket;
-import com.raytolfas.veloray.proxy.protocol.StateRegistry;
-import com.raytolfas.veloray.proxy.protocol.packet.HandshakePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.LegacyDisconnect;
-import com.raytolfas.veloray.proxy.protocol.packet.LegacyHandshakePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.LegacyPingPacket;
+import com.velocitypowered.proxy.config.PlayerInfoForwarding;
+import com.velocitypowered.proxy.connection.ConnectionType;
+import com.velocitypowered.proxy.connection.ConnectionTypes;
+import com.velocitypowered.proxy.connection.forge.legacy.LegacyForgeConstants;
+import com.velocitypowered.proxy.connection.forge.modern.ModernForgeConnectionType;
+import com.velocitypowered.proxy.connection.forge.modern.ModernForgeConstants;
+import com.velocitypowered.proxy.connection.MinecraftConnection;
+import com.velocitypowered.proxy.connection.MinecraftSessionHandler;
+import com.velocitypowered.proxy.connection.util.VelocityInboundConnection;
+import com.velocitypowered.proxy.protocol.MinecraftPacket;
+import com.velocitypowered.proxy.protocol.packet.HandshakePacket;
+import com.velocitypowered.proxy.protocol.packet.LegacyDisconnect;
+import com.velocitypowered.proxy.protocol.packet.LegacyHandshakePacket;
+import com.velocitypowered.proxy.protocol.packet.LegacyPingPacket;
+import com.velocitypowered.proxy.protocol.StateRegistry;
+import com.velocitypowered.proxy.VelocityServer;
 import io.netty.buffer.ByteBuf;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -46,10 +46,9 @@ import java.util.Optional;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.minimessage.translation.Argument;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * The initial handler used when a connection is established to the proxy. This will either
  * transition to {@link StatusSessionHandler} or {@link InitialLoginSessionHandler} as soon as the

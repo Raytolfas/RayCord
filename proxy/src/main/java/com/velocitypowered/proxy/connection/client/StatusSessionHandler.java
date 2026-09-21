@@ -15,23 +15,22 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.client;
+package com.velocitypowered.proxy.connection.client;
 
 import com.velocitypowered.api.event.proxy.ProxyPingEvent;
-import com.raytolfas.veloray.proxy.VelocityServer;
-import com.raytolfas.veloray.proxy.connection.MinecraftConnection;
-import com.raytolfas.veloray.proxy.connection.MinecraftSessionHandler;
-import com.raytolfas.veloray.proxy.connection.util.VelocityInboundConnection;
-import com.raytolfas.veloray.proxy.protocol.packet.LegacyDisconnect;
-import com.raytolfas.veloray.proxy.protocol.packet.LegacyPingPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.StatusPingPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.StatusRequestPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.StatusResponsePacket;
-import com.raytolfas.veloray.proxy.util.except.QuietRuntimeException;
+import com.velocitypowered.proxy.connection.MinecraftConnection;
+import com.velocitypowered.proxy.connection.MinecraftSessionHandler;
+import com.velocitypowered.proxy.connection.util.VelocityInboundConnection;
+import com.velocitypowered.proxy.protocol.packet.LegacyDisconnect;
+import com.velocitypowered.proxy.protocol.packet.LegacyPingPacket;
+import com.velocitypowered.proxy.protocol.packet.StatusPingPacket;
+import com.velocitypowered.proxy.protocol.packet.StatusRequestPacket;
+import com.velocitypowered.proxy.protocol.packet.StatusResponsePacket;
+import com.velocitypowered.proxy.util.except.QuietRuntimeException;
+import com.velocitypowered.proxy.VelocityServer;
 import io.netty.buffer.ByteBuf;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+import org.apache.logging.log4j.LogManager;
 /**
  * Handles server list ping packets from a client.
  */

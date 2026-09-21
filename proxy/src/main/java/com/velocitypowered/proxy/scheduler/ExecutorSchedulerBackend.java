@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.scheduler;
+package com.velocitypowered.proxy.scheduler;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -24,7 +24,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
-
 /**
  * A {@link SchedulerBackend} backed by a real {@link ScheduledExecutorService}.
  */

@@ -15,17 +15,16 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.plugin.loader.java;
+package com.velocitypowered.proxy.plugin.loader.java;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.velocitypowered.api.plugin.meta.PluginDependency;
-import com.raytolfas.veloray.proxy.plugin.loader.VelocityPluginDescription;
+import com.velocitypowered.proxy.plugin.loader.VelocityPluginDescription;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.List;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 class JavaVelocityPluginDescription extends VelocityPluginDescription {
 
   private final Class<?> mainClass;

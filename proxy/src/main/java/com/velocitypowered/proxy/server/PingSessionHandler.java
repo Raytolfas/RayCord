@@ -15,23 +15,22 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.server;
+package com.velocitypowered.proxy.server;
 
 import com.velocitypowered.api.network.HandshakeIntent;
 import com.velocitypowered.api.network.ProtocolVersion;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
 import com.velocitypowered.api.proxy.server.ServerPing;
-import com.raytolfas.veloray.proxy.VelocityServer;
-import com.raytolfas.veloray.proxy.connection.MinecraftConnection;
-import com.raytolfas.veloray.proxy.connection.MinecraftSessionHandler;
-import com.raytolfas.veloray.proxy.protocol.StateRegistry;
-import com.raytolfas.veloray.proxy.protocol.packet.HandshakePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.StatusRequestPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.StatusResponsePacket;
+import com.velocitypowered.proxy.connection.MinecraftConnection;
+import com.velocitypowered.proxy.connection.MinecraftSessionHandler;
+import com.velocitypowered.proxy.protocol.packet.HandshakePacket;
+import com.velocitypowered.proxy.protocol.packet.StatusRequestPacket;
+import com.velocitypowered.proxy.protocol.packet.StatusResponsePacket;
+import com.velocitypowered.proxy.protocol.StateRegistry;
+import com.velocitypowered.proxy.VelocityServer;
 import io.netty.channel.EventLoop;
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
-
 /**
  * Session handler used to implement {@link VelocityRegisteredServer#ping(EventLoop,
  * com.velocitypowered.api.proxy.server.PingOptions)}.

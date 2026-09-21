@@ -15,12 +15,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.registry;
+package com.velocitypowered.proxy.connection.registry;
 
 import com.google.common.base.Preconditions;
 import com.velocitypowered.api.network.ProtocolVersion;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * Represents basic information for a Minecraft dimension.
  */

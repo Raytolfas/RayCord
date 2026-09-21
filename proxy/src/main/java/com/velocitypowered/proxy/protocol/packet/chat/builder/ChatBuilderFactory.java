@@ -15,14 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet.chat.builder;
+package com.velocitypowered.proxy.protocol.packet.chat.builder;
 
 import com.velocitypowered.api.network.ProtocolVersion;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.keyed.KeyedChatBuilder;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.legacy.LegacyChatBuilder;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.session.SessionChatBuilder;
+import com.velocitypowered.proxy.protocol.packet.chat.keyed.KeyedChatBuilder;
+import com.velocitypowered.proxy.protocol.packet.chat.legacy.LegacyChatBuilder;
+import com.velocitypowered.proxy.protocol.packet.chat.session.SessionChatBuilder;
 import java.util.function.Function;
-
 public class ChatBuilderFactory {
 
   private final ProtocolVersion version;

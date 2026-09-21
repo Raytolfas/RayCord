@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.event;
+package com.velocitypowered.proxy.event;
 
 import static java.util.Objects.requireNonNull;
 
@@ -34,10 +34,10 @@ import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.plugin.PluginContainer;
 import com.velocitypowered.api.plugin.PluginDescription;
 import com.velocitypowered.api.plugin.PluginManager;
-import com.raytolfas.veloray.proxy.event.UntargetedEventHandler.EventTaskHandler;
-import com.raytolfas.veloray.proxy.event.UntargetedEventHandler.VoidHandler;
-import com.raytolfas.veloray.proxy.event.UntargetedEventHandler.WithContinuationHandler;
-import com.raytolfas.veloray.proxy.util.collect.Enum2IntMap;
+import com.velocitypowered.proxy.event.UntargetedEventHandler.EventTaskHandler;
+import com.velocitypowered.proxy.event.UntargetedEventHandler.VoidHandler;
+import com.velocitypowered.proxy.event.UntargetedEventHandler.WithContinuationHandler;
+import com.velocitypowered.proxy.util.collect.Enum2IntMap;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.VarHandle;
@@ -48,12 +48,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -61,13 +55,18 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.lanternpowered.lmbda.LambdaFactory;
 import org.lanternpowered.lmbda.LambdaType;
-
 /**
  * Implements the Velocity event handler.
  */

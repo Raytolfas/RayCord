@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.util;
+package com.velocitypowered.proxy.connection.util;
 
 import com.google.common.collect.ImmutableList;
 import com.spotify.futures.CompletableFutures;
@@ -24,20 +24,19 @@ import com.velocitypowered.api.proxy.server.PingOptions;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
 import com.velocitypowered.api.proxy.server.ServerPing;
 import com.velocitypowered.api.util.ModInfo;
-import com.raytolfas.veloray.proxy.VelocityServer;
-import com.raytolfas.veloray.proxy.config.PingPassthroughMode;
-import com.raytolfas.veloray.proxy.config.VelocityConfiguration;
-import com.raytolfas.veloray.proxy.server.VelocityRegisteredServer;
+import com.velocitypowered.proxy.config.PingPassthroughMode;
+import com.velocitypowered.proxy.config.VelocityConfiguration;
+import com.velocitypowered.proxy.server.VelocityRegisteredServer;
+import com.velocitypowered.proxy.VelocityServer;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.concurrent.CompletableFuture;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import net.kyori.adventure.text.Component;
-
 /**
  * Common utilities for handling server list ping results.
  */
@@ -72,7 +71,7 @@ public class ServerListPingHandler {
     }
     return new ServerPing(
         new ServerPing.Version(version.getProtocol(),
-            "Velocity " + ProtocolVersion.SUPPORTED_VERSION_STRING),
+            "RayCord " + ProtocolVersion.SUPPORTED_VERSION_STRING),
         new ServerPing.Players(server.getPlayerCount(), configuration.getShowMaxPlayers(),
             samplePlayers),
         configuration.getMotd(),

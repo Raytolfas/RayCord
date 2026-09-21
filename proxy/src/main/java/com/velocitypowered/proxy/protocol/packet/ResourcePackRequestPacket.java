@@ -15,24 +15,23 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet;
+package com.velocitypowered.proxy.protocol.packet;
 
 import com.google.common.base.Preconditions;
 import com.velocitypowered.api.network.ProtocolVersion;
 import com.velocitypowered.api.proxy.player.ResourcePackInfo;
-import com.raytolfas.veloray.proxy.connection.MinecraftSessionHandler;
-import com.raytolfas.veloray.proxy.connection.player.resourcepack.VelocityResourcePackInfo;
-import com.raytolfas.veloray.proxy.protocol.MinecraftPacket;
-import com.raytolfas.veloray.proxy.protocol.ProtocolUtils;
-import com.raytolfas.veloray.proxy.protocol.ProtocolUtils.Direction;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.ComponentHolder;
+import com.velocitypowered.proxy.connection.MinecraftSessionHandler;
+import com.velocitypowered.proxy.connection.player.resourcepack.VelocityResourcePackInfo;
+import com.velocitypowered.proxy.protocol.MinecraftPacket;
+import com.velocitypowered.proxy.protocol.packet.chat.ComponentHolder;
+import com.velocitypowered.proxy.protocol.ProtocolUtils.Direction;
+import com.velocitypowered.proxy.protocol.ProtocolUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
-import java.util.UUID;
 import java.util.regex.Pattern;
+import java.util.UUID;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 public class ResourcePackRequestPacket implements MinecraftPacket {
 
   private @MonotonicNonNull UUID id; // 1.20.3+

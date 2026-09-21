@@ -15,12 +15,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol;
+package com.velocitypowered.proxy.protocol;
 
 import com.velocitypowered.api.network.ProtocolVersion;
-import com.raytolfas.veloray.proxy.connection.MinecraftSessionHandler;
+import com.velocitypowered.proxy.connection.MinecraftSessionHandler;
 import io.netty.buffer.ByteBuf;
-
 /**
  * Represents a Minecraft packet.
  */

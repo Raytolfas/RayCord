@@ -15,15 +15,14 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.command.brigadier;
+package com.velocitypowered.proxy.command.brigadier;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.StringReader;
 import org.junit.jupiter.api.Test;
-
 /**
  * Tests for {@link StringArrayArgumentType}.
  */
@@ -67,8 +66,8 @@ public class StringArrayArgumentTypeTests {
 
   @Test
   void testLeadingWhitespace() throws CommandSyntaxException {
-    final StringReader reader = new StringReader(" ¡Hola!");
-    assertArrayEquals(new String[]{"", "¡Hola!"}, TYPE.parse(reader));
+    final StringReader reader = new StringReader(" Р’РЋHola!");
+    assertArrayEquals(new String[]{"", "Р’РЋHola!"}, TYPE.parse(reader));
     assertFalse(reader.canRead());
   }
 

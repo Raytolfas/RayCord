@@ -15,14 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.component;
+package com.velocitypowered.proxy.component;
 
 import com.velocitypowered.api.network.ProtocolVersion;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.ComponentHolder;
+import com.velocitypowered.proxy.protocol.packet.chat.ComponentHolder;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.junit.jupiter.api.Test;
-
 /**
  * ComponentHolder tests.
  */

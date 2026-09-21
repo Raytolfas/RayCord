@@ -15,14 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet.title;
+package com.velocitypowered.proxy.protocol.packet.title;
 
 import com.velocitypowered.api.network.ProtocolVersion;
-import com.raytolfas.veloray.proxy.protocol.MinecraftPacket;
-import com.raytolfas.veloray.proxy.protocol.ProtocolUtils;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.ComponentHolder;
+import com.velocitypowered.proxy.protocol.MinecraftPacket;
+import com.velocitypowered.proxy.protocol.packet.chat.ComponentHolder;
+import com.velocitypowered.proxy.protocol.ProtocolUtils;
 import io.netty.buffer.ByteBuf;
-
 public abstract class GenericTitlePacket implements MinecraftPacket {
 
   public enum ActionType {

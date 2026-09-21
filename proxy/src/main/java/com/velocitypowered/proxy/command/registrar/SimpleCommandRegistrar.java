@@ -15,15 +15,14 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.command.registrar;
+package com.velocitypowered.proxy.command.registrar;
 
 import com.mojang.brigadier.tree.RootCommandNode;
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.command.SimpleCommand;
-import com.raytolfas.veloray.proxy.command.brigadier.StringArrayArgumentType;
-import com.raytolfas.veloray.proxy.command.invocation.SimpleCommandInvocation;
+import com.velocitypowered.proxy.command.brigadier.StringArrayArgumentType;
+import com.velocitypowered.proxy.command.invocation.SimpleCommandInvocation;
 import java.util.concurrent.locks.Lock;
-
 /**
  * Registers {@link SimpleCommand}s in a root node.
  */

@@ -15,22 +15,22 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.plugin.loader.java;
+package com.velocitypowered.proxy.plugin.loader.java;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
+import com.velocitypowered.api.plugin.ap.SerializedPluginDescription;
 import com.velocitypowered.api.plugin.InvalidPluginException;
+import com.velocitypowered.api.plugin.meta.PluginDependency;
 import com.velocitypowered.api.plugin.PluginContainer;
 import com.velocitypowered.api.plugin.PluginDescription;
-import com.velocitypowered.api.plugin.ap.SerializedPluginDescription;
-import com.velocitypowered.api.plugin.meta.PluginDependency;
 import com.velocitypowered.api.proxy.ProxyServer;
-import com.raytolfas.veloray.proxy.VelocityServer;
-import com.raytolfas.veloray.proxy.plugin.PluginClassLoader;
-import com.raytolfas.veloray.proxy.plugin.loader.PluginLoader;
-import com.raytolfas.veloray.proxy.plugin.loader.VelocityPluginContainer;
-import com.raytolfas.veloray.proxy.plugin.loader.VelocityPluginDescription;
+import com.velocitypowered.proxy.plugin.loader.PluginLoader;
+import com.velocitypowered.proxy.plugin.loader.VelocityPluginContainer;
+import com.velocitypowered.proxy.plugin.loader.VelocityPluginDescription;
+import com.velocitypowered.proxy.plugin.PluginClassLoader;
+import com.velocitypowered.proxy.VelocityServer;
 import java.io.BufferedInputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -39,11 +39,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
-
+import java.util.Optional;
+import java.util.Set;
 /**
  * Implements loading a Java plugin.
  */

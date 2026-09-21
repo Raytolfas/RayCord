@@ -15,11 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.util;
+package com.velocitypowered.proxy.connection.util;
 
 import com.velocitypowered.api.proxy.InboundConnection;
-import com.raytolfas.veloray.proxy.connection.MinecraftConnection;
-
+import com.velocitypowered.proxy.connection.MinecraftConnection;
 /**
  * Base internal interface for a {@link InboundConnection}.
  */

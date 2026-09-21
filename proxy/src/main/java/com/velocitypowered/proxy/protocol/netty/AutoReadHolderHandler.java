@@ -15,14 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.netty;
+package com.velocitypowered.proxy.protocol.netty;
 
 import io.netty.channel.ChannelDuplexHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.ReferenceCountUtil;
 import java.util.ArrayDeque;
 import java.util.Queue;
-
 /**
  * A variation on {@link io.netty.handler.flow.FlowControlHandler} that explicitly holds messages on
  * {@code channelRead} and only releases them on an explicit read operation.

@@ -15,24 +15,23 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.command;
+package com.velocitypowered.proxy.command;
 
 import com.google.common.base.Preconditions;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContextBuilder;
 import com.mojang.brigadier.context.StringRange;
+import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.tree.CommandNode;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import com.mojang.brigadier.tree.RootCommandNode;
-import com.raytolfas.veloray.proxy.command.brigadier.VelocityArgumentCommandNode;
+import com.velocitypowered.proxy.command.brigadier.VelocityArgumentCommandNode;
+import java.util.concurrent.locks.Lock;
 import java.util.IdentityHashMap;
 import java.util.Map;
-import java.util.concurrent.locks.Lock;
 import org.checkerframework.checker.lock.qual.GuardedBy;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * Copies the nodes of a {@link RootCommandNode} to a possibly non-empty destination
  * {@link RootCommandNode}, respecting the requirements satisfied by a given command source.

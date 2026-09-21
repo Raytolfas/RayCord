@@ -15,16 +15,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet.chat.legacy;
+package com.velocitypowered.proxy.protocol.packet.chat.legacy;
 
 import com.velocitypowered.api.network.ProtocolVersion;
-import com.raytolfas.veloray.proxy.protocol.MinecraftPacket;
-import com.raytolfas.veloray.proxy.protocol.ProtocolUtils;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.builder.ChatBuilderV2;
+import com.velocitypowered.proxy.protocol.MinecraftPacket;
+import com.velocitypowered.proxy.protocol.packet.chat.builder.ChatBuilderV2;
+import com.velocitypowered.proxy.protocol.ProtocolUtils;
 import java.util.UUID;
 import net.kyori.adventure.identity.Identity;
 import net.kyori.adventure.text.Component;
-
 public class LegacyChatBuilder extends ChatBuilderV2 {
 
   public LegacyChatBuilder(ProtocolVersion version) {

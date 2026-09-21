@@ -1,7 +1,15 @@
-# VeloRay extra configuration.
+# RayCord extra configuration.
+
+[modules]
+# Master switch for built-in RayCord modules loaded from config/modules.
+enabled = true
+motd = true
+antibot = true
+# Bundled preset used when applying or seeding module templates.
+preset = "balanced"
 
 [command-bridge]
-# Enables the /veloray cmd <server> <command> bridge.
+# Enables the /raycord cmd <server> <command> bridge.
 enabled = false
 
 # Timeouts in milliseconds for connecting to backend RCON.

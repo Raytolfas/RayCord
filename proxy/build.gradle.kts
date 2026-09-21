@@ -9,7 +9,7 @@ plugins {
 }
 
 application {
-    mainClass.set("com.raytolfas.veloray.proxy.Velocity")
+    mainClass.set("com.velocitypowered.proxy.Velocity")
     applicationDefaultJvmArgs += listOf("-Dvelocity.packet-decode-logging=true")
 }
 
@@ -19,14 +19,19 @@ tasks {
     }
 
     jar {
+        archiveBaseName.set("raycord")
         manifest {
-            attributes["Implementation-Title"] = "VeloRay"
-            attributes["Implementation-Vendor"] = "VeloRay Contributors"
+            attributes["Implementation-Title"] = "RayCord"
+            attributes["Implementation-Vendor"] = "RayCord Contributors"
             attributes["Multi-Release"] = "true"
         }
     }
 
     shadowJar {
+        archiveBaseName.set("raycord")
+        archiveClassifier.set("")
+        destinationDirectory.set(rootProject.layout.buildDirectory.dir("libs"))
+
         filesMatching("META-INF/org/apache/logging/log4j/core/config/plugins/**") {
             duplicatesStrategy = DuplicatesStrategy.INCLUDE
         }
@@ -95,7 +100,7 @@ tasks {
         // Exclude Checker Framework annotations
         exclude("org/checkerframework/checker/**")
 
-        relocate("org.bstats", "com.raytolfas.veloray.proxy.bstats")
+        relocate("org.bstats", "com.velocitypowered.proxy.bstats")
 
         // Include Configurate 3
         val configurateBuildTask = project(":deprecated-configurate3").tasks.named("shadowJar")
@@ -116,7 +121,7 @@ tasks {
 
 val projectVersion = version as String
 fill {
-    project("veloray")
+    project("raycord")
 
     build {
         channel = BuildChannel.STABLE

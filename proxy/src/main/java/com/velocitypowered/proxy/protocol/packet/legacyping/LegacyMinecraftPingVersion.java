@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet.legacyping;
+package com.velocitypowered.proxy.protocol.packet.legacyping;
 
 public enum LegacyMinecraftPingVersion {
   MINECRAFT_1_3,

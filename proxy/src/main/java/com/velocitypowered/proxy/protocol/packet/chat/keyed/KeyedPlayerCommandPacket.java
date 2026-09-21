@@ -15,26 +15,25 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet.chat.keyed;
+package com.velocitypowered.proxy.protocol.packet.chat.keyed;
 
-import static com.raytolfas.veloray.proxy.protocol.packet.chat.keyed.KeyedPlayerChatPacket.INVALID_PREVIOUS_MESSAGES;
-import static com.raytolfas.veloray.proxy.protocol.packet.chat.keyed.KeyedPlayerChatPacket.MAXIMUM_PREVIOUS_MESSAGE_COUNT;
+import static com.velocitypowered.proxy.protocol.packet.chat.keyed.KeyedPlayerChatPacket.INVALID_PREVIOUS_MESSAGES;
+import static com.velocitypowered.proxy.protocol.packet.chat.keyed.KeyedPlayerChatPacket.MAXIMUM_PREVIOUS_MESSAGE_COUNT;
 
 import com.google.common.collect.ImmutableMap;
 import com.velocitypowered.api.network.ProtocolVersion;
-import com.raytolfas.veloray.proxy.connection.MinecraftSessionHandler;
-import com.raytolfas.veloray.proxy.crypto.EncryptionUtils;
-import com.raytolfas.veloray.proxy.crypto.SignaturePair;
-import com.raytolfas.veloray.proxy.protocol.MinecraftPacket;
-import com.raytolfas.veloray.proxy.protocol.ProtocolUtils;
-import com.raytolfas.veloray.proxy.util.except.QuietDecoderException;
+import com.velocitypowered.proxy.connection.MinecraftSessionHandler;
+import com.velocitypowered.proxy.crypto.EncryptionUtils;
+import com.velocitypowered.proxy.crypto.SignaturePair;
+import com.velocitypowered.proxy.protocol.MinecraftPacket;
+import com.velocitypowered.proxy.protocol.ProtocolUtils;
+import com.velocitypowered.proxy.util.except.QuietDecoderException;
 import io.netty.buffer.ByteBuf;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 public class KeyedPlayerCommandPacket implements MinecraftPacket {
 
   private static final int MAX_NUM_ARGUMENTS = 8;

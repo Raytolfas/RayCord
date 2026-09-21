@@ -15,14 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.util;
+package com.velocitypowered.proxy.connection.util;
 
 import com.velocitypowered.api.util.GameProfile;
-import com.raytolfas.veloray.proxy.config.PlayerInfoForwarding;
-import com.raytolfas.veloray.proxy.connection.ConnectionType;
-import com.raytolfas.veloray.proxy.connection.backend.BackendConnectionPhase;
-import com.raytolfas.veloray.proxy.connection.client.ClientConnectionPhase;
-
+import com.velocitypowered.proxy.config.PlayerInfoForwarding;
+import com.velocitypowered.proxy.connection.backend.BackendConnectionPhase;
+import com.velocitypowered.proxy.connection.client.ClientConnectionPhase;
+import com.velocitypowered.proxy.connection.ConnectionType;
 /**
  * Indicates the type of connection that has been made.
  */

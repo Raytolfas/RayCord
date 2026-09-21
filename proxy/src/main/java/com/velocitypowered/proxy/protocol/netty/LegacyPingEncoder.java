@@ -15,15 +15,14 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.netty;
+package com.velocitypowered.proxy.protocol.netty;
 
-import com.raytolfas.veloray.proxy.protocol.packet.LegacyDisconnect;
+import com.velocitypowered.proxy.protocol.packet.LegacyDisconnect;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
 import java.nio.charset.StandardCharsets;
-
 /**
  * Encodes {@code LegacyDisconnect} for Minecraft 1.3-1.6.4.
  */

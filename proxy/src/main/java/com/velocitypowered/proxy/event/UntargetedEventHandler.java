@@ -15,14 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.event;
+package com.velocitypowered.proxy.event;
 
 import com.velocitypowered.api.event.AwaitingEventExecutor;
 import com.velocitypowered.api.event.Continuation;
 import com.velocitypowered.api.event.EventHandler;
 import com.velocitypowered.api.event.EventTask;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * Core class for invoking event handlers registered by plugins.
  */

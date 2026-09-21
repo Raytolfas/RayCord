@@ -15,10 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet.chat;
+package com.velocitypowered.proxy.protocol.packet.chat;
 
 import java.time.Instant;
-
 public class ChatTimeKeeper {
 
   private Instant lastTimestamp;

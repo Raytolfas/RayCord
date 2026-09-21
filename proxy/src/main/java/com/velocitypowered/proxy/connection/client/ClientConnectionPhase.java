@@ -15,12 +15,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.client;
+package com.velocitypowered.proxy.connection.client;
 
-import com.raytolfas.veloray.proxy.connection.backend.VelocityServerConnection;
-import com.raytolfas.veloray.proxy.connection.forge.legacy.LegacyForgeHandshakeClientPhase;
-import com.raytolfas.veloray.proxy.protocol.packet.PluginMessagePacket;
-
+import com.velocitypowered.proxy.connection.backend.VelocityServerConnection;
+import com.velocitypowered.proxy.connection.forge.legacy.LegacyForgeHandshakeClientPhase;
+import com.velocitypowered.proxy.protocol.packet.PluginMessagePacket;
 /**
  * Provides connection phase specific actions.
  *

@@ -15,11 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.player.resourcepack;
+package com.velocitypowered.proxy.connection.player.resourcepack;
 
 import com.velocitypowered.api.event.player.PlayerResourcePackStatusEvent;
 import java.util.UUID;
-
 @SuppressWarnings("checkstyle:MissingJavadocType")
 public record ResourcePackResponseBundle(UUID uuid, String hash,
                                          PlayerResourcePackStatusEvent.Status status) {

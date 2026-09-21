@@ -15,18 +15,17 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.netty;
+package com.velocitypowered.proxy.protocol.netty;
 
-import static com.raytolfas.veloray.proxy.protocol.netty.MinecraftVarintLengthEncoder.IS_JAVA_CIPHER;
+import static com.velocitypowered.proxy.protocol.netty.MinecraftVarintLengthEncoder.IS_JAVA_CIPHER;
 
 import com.velocitypowered.natives.compression.VelocityCompressor;
 import com.velocitypowered.natives.util.MoreByteBufUtils;
-import com.raytolfas.veloray.proxy.protocol.ProtocolUtils;
+import com.velocitypowered.proxy.protocol.ProtocolUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
 import java.util.zip.DataFormatException;
-
 /**
  * Handler for compressing Minecraft packets.
  */

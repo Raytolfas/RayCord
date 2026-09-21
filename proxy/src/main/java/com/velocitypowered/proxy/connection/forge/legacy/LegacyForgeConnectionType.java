@@ -15,13 +15,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.forge.legacy;
+package com.velocitypowered.proxy.connection.forge.legacy;
 
 import com.velocitypowered.api.util.GameProfile;
-import com.raytolfas.veloray.proxy.config.PlayerInfoForwarding;
-import com.raytolfas.veloray.proxy.connection.ConnectionTypes;
-import com.raytolfas.veloray.proxy.connection.util.ConnectionTypeImpl;
-
+import com.velocitypowered.proxy.config.PlayerInfoForwarding;
+import com.velocitypowered.proxy.connection.ConnectionTypes;
+import com.velocitypowered.proxy.connection.util.ConnectionTypeImpl;
 /**
  * Contains extra logic for {@link ConnectionTypes#LEGACY_FORGE}.
  */

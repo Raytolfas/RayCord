@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.plugin.virtual;
+package com.velocitypowered.proxy.plugin.virtual;
 
 /**
  * A singleton plugin object that represents the Velocity proxy itself.

@@ -15,13 +15,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.util;
+package com.velocitypowered.proxy.protocol.util;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufHolder;
 import io.netty.util.IllegalReferenceCountException;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
-
 /**
  * A special-purpose implementation of {@code ByteBufHolder} that can defer accepting its buffer.
  * This is required because Velocity packets are, for better or worse, mutable.

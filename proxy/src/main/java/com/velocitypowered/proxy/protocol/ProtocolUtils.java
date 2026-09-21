@@ -15,17 +15,17 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol;
+package com.velocitypowered.proxy.protocol;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.raytolfas.veloray.proxy.protocol.util.NettyPreconditions.checkFrame;
+import static com.velocitypowered.proxy.protocol.util.NettyPreconditions.checkFrame;
 
 import com.velocitypowered.api.network.ProtocolVersion;
 import com.velocitypowered.api.proxy.crypto.IdentifiedKey;
 import com.velocitypowered.api.util.GameProfile;
-import com.raytolfas.veloray.proxy.crypto.IdentifiedKeyImpl;
-import com.raytolfas.veloray.proxy.protocol.netty.MinecraftDecoder;
-import com.raytolfas.veloray.proxy.util.except.QuietDecoderException;
+import com.velocitypowered.proxy.crypto.IdentifiedKeyImpl;
+import com.velocitypowered.proxy.protocol.netty.MinecraftDecoder;
+import com.velocitypowered.proxy.util.except.QuietDecoderException;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufInputStream;
 import io.netty.buffer.ByteBufOutputStream;
@@ -51,7 +51,6 @@ import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
 import net.kyori.adventure.text.serializer.json.JSONOptions;
 import net.kyori.adventure.text.serializer.json.legacyimpl.NBTLegacyHoverEventSerializer;
 import net.kyori.option.OptionSchema;
-
 /**
  * Utilities for writing and reading data in the Minecraft protocol.
  */

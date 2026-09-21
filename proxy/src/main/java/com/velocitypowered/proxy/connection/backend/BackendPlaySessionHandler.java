@@ -15,9 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.backend;
+package com.velocitypowered.proxy.connection.backend;
 
-import static com.raytolfas.veloray.proxy.connection.backend.BungeeCordMessageResponder.getBungeeCordChannel;
+import static com.velocitypowered.proxy.connection.backend.BungeeCordMessageResponder.getBungeeCordChannel;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
@@ -35,41 +35,41 @@ import com.velocitypowered.api.event.proxy.ProxyPingEvent;
 import com.velocitypowered.api.network.ProtocolVersion;
 import com.velocitypowered.api.proxy.messages.ChannelIdentifier;
 import com.velocitypowered.api.proxy.player.ResourcePackInfo;
-import com.raytolfas.veloray.proxy.VelocityServer;
-import com.raytolfas.veloray.proxy.command.CommandGraphInjector;
-import com.raytolfas.veloray.proxy.connection.MinecraftConnection;
-import com.raytolfas.veloray.proxy.connection.MinecraftSessionHandler;
-import com.raytolfas.veloray.proxy.connection.client.ClientPlaySessionHandler;
-import com.raytolfas.veloray.proxy.connection.client.ConnectedPlayer;
-import com.raytolfas.veloray.proxy.connection.player.resourcepack.VelocityResourcePackInfo;
-import com.raytolfas.veloray.proxy.connection.player.resourcepack.handler.ResourcePackHandler;
-import com.raytolfas.veloray.proxy.connection.util.ConnectionMessages;
-import com.raytolfas.veloray.proxy.protocol.MinecraftPacket;
-import com.raytolfas.veloray.proxy.protocol.StateRegistry;
-import com.raytolfas.veloray.proxy.protocol.netty.MinecraftDecoder;
-import com.raytolfas.veloray.proxy.protocol.netty.MinecraftVarintFrameDecoder;
-import com.raytolfas.veloray.proxy.protocol.packet.AvailableCommandsPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.BossBarPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.BundleDelimiterPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.ClientSettingsPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.ClientboundCookieRequestPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.ClientboundStoreCookiePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.DisconnectPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.KeepAlivePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.LegacyPlayerListItemPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.PluginMessagePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.RemovePlayerInfoPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.RemoveResourcePackPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.ResourcePackRequestPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.ResourcePackResponsePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.ServerDataPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.TabCompleteResponsePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.TransferPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.UpsertPlayerInfoPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.ComponentHolder;
-import com.raytolfas.veloray.proxy.protocol.packet.config.StartUpdatePacket;
-import com.raytolfas.veloray.proxy.protocol.util.DeferredByteBufHolder;
-import com.raytolfas.veloray.proxy.protocol.util.PluginMessageUtil;
+import com.velocitypowered.proxy.command.CommandGraphInjector;
+import com.velocitypowered.proxy.connection.client.ClientPlaySessionHandler;
+import com.velocitypowered.proxy.connection.client.ConnectedPlayer;
+import com.velocitypowered.proxy.connection.MinecraftConnection;
+import com.velocitypowered.proxy.connection.MinecraftSessionHandler;
+import com.velocitypowered.proxy.connection.player.resourcepack.handler.ResourcePackHandler;
+import com.velocitypowered.proxy.connection.player.resourcepack.VelocityResourcePackInfo;
+import com.velocitypowered.proxy.connection.util.ConnectionMessages;
+import com.velocitypowered.proxy.protocol.MinecraftPacket;
+import com.velocitypowered.proxy.protocol.netty.MinecraftDecoder;
+import com.velocitypowered.proxy.protocol.netty.MinecraftVarintFrameDecoder;
+import com.velocitypowered.proxy.protocol.packet.AvailableCommandsPacket;
+import com.velocitypowered.proxy.protocol.packet.BossBarPacket;
+import com.velocitypowered.proxy.protocol.packet.BundleDelimiterPacket;
+import com.velocitypowered.proxy.protocol.packet.chat.ComponentHolder;
+import com.velocitypowered.proxy.protocol.packet.ClientboundCookieRequestPacket;
+import com.velocitypowered.proxy.protocol.packet.ClientboundStoreCookiePacket;
+import com.velocitypowered.proxy.protocol.packet.ClientSettingsPacket;
+import com.velocitypowered.proxy.protocol.packet.config.StartUpdatePacket;
+import com.velocitypowered.proxy.protocol.packet.DisconnectPacket;
+import com.velocitypowered.proxy.protocol.packet.KeepAlivePacket;
+import com.velocitypowered.proxy.protocol.packet.LegacyPlayerListItemPacket;
+import com.velocitypowered.proxy.protocol.packet.PluginMessagePacket;
+import com.velocitypowered.proxy.protocol.packet.RemovePlayerInfoPacket;
+import com.velocitypowered.proxy.protocol.packet.RemoveResourcePackPacket;
+import com.velocitypowered.proxy.protocol.packet.ResourcePackRequestPacket;
+import com.velocitypowered.proxy.protocol.packet.ResourcePackResponsePacket;
+import com.velocitypowered.proxy.protocol.packet.ServerDataPacket;
+import com.velocitypowered.proxy.protocol.packet.TabCompleteResponsePacket;
+import com.velocitypowered.proxy.protocol.packet.TransferPacket;
+import com.velocitypowered.proxy.protocol.packet.UpsertPlayerInfoPacket;
+import com.velocitypowered.proxy.protocol.StateRegistry;
+import com.velocitypowered.proxy.protocol.util.DeferredByteBufHolder;
+import com.velocitypowered.proxy.protocol.util.PluginMessageUtil;
+import com.velocitypowered.proxy.VelocityServer;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
 import io.netty.buffer.Unpooled;
@@ -78,9 +78,8 @@ import io.netty.handler.timeout.ReadTimeoutException;
 import java.net.InetSocketAddress;
 import java.util.regex.Pattern;
 import net.kyori.adventure.key.Key;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+import org.apache.logging.log4j.LogManager;
 /**
  * Handles a connected player.
  */

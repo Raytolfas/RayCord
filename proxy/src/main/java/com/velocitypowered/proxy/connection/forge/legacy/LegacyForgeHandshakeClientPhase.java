@@ -15,19 +15,18 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.forge.legacy;
+package com.velocitypowered.proxy.connection.forge.legacy;
 
 import com.velocitypowered.api.util.ModInfo;
-import com.raytolfas.veloray.proxy.connection.MinecraftConnection;
-import com.raytolfas.veloray.proxy.connection.MinecraftSessionHandler;
-import com.raytolfas.veloray.proxy.connection.backend.VelocityServerConnection;
-import com.raytolfas.veloray.proxy.connection.client.ClientConnectionPhase;
-import com.raytolfas.veloray.proxy.connection.client.ClientPlaySessionHandler;
-import com.raytolfas.veloray.proxy.connection.client.ConnectedPlayer;
-import com.raytolfas.veloray.proxy.protocol.packet.PluginMessagePacket;
+import com.velocitypowered.proxy.connection.backend.VelocityServerConnection;
+import com.velocitypowered.proxy.connection.client.ClientConnectionPhase;
+import com.velocitypowered.proxy.connection.client.ClientPlaySessionHandler;
+import com.velocitypowered.proxy.connection.client.ConnectedPlayer;
+import com.velocitypowered.proxy.connection.MinecraftConnection;
+import com.velocitypowered.proxy.connection.MinecraftSessionHandler;
+import com.velocitypowered.proxy.protocol.packet.PluginMessagePacket;
 import java.util.List;
 import javax.annotation.Nullable;
-
 /**
  * Allows for simple tracking of the phase that the Legacy Forge handshake is in.
  */

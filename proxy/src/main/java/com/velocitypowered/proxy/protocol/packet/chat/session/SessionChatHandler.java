@@ -15,22 +15,20 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet.chat.session;
+package com.velocitypowered.proxy.protocol.packet.chat.session;
 
-import static com.raytolfas.veloray.proxy.protocol.packet.chat.keyed.KeyedChatHandler.invalidCancel;
-import static com.raytolfas.veloray.proxy.protocol.packet.chat.keyed.KeyedChatHandler.invalidChange;
+import static com.velocitypowered.proxy.protocol.packet.chat.keyed.KeyedChatHandler.invalidCancel;
+import static com.velocitypowered.proxy.protocol.packet.chat.keyed.KeyedChatHandler.invalidChange;
 
 import com.velocitypowered.api.event.EventManager;
 import com.velocitypowered.api.event.player.PlayerChatEvent;
-import com.raytolfas.veloray.proxy.VelocityServer;
-import com.raytolfas.veloray.proxy.connection.client.ConnectedPlayer;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.ChatHandler;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.ChatQueue;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import com.velocitypowered.proxy.connection.client.ConnectedPlayer;
+import com.velocitypowered.proxy.protocol.packet.chat.ChatHandler;
+import com.velocitypowered.proxy.protocol.packet.chat.ChatQueue;
+import com.velocitypowered.proxy.VelocityServer;
 import java.util.concurrent.CompletableFuture;
-
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 public class SessionChatHandler implements ChatHandler<SessionPlayerChatPacket> {
 
   private static final Logger logger = LogManager.getLogger(SessionChatHandler.class);

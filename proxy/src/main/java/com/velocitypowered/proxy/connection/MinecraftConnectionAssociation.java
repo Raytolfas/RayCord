@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection;
+package com.velocitypowered.proxy.connection;
 
 /**
  * Marker interface for something that can be associated with a {@link MinecraftConnection}.

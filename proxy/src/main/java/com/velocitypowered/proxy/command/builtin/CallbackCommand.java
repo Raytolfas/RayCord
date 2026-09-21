@@ -15,17 +15,16 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.command.builtin;
+package com.velocitypowered.proxy.command.builtin;
 
-import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import com.velocitypowered.api.command.BrigadierCommand;
 import com.velocitypowered.api.command.CommandSource;
-import com.raytolfas.veloray.proxy.adventure.ClickCallbackManager;
+import com.velocitypowered.proxy.adventure.ClickCallbackManager;
 import java.util.UUID;
-
 /**
  * Callback Command.
  */

@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.util;
+package com.velocitypowered.proxy.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -25,7 +25,6 @@ import com.velocitypowered.api.proxy.messages.LegacyChannelIdentifier;
 import com.velocitypowered.api.proxy.messages.MinecraftChannelIdentifier;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
-
 class VelocityChannelRegistrarTest {
 
   private static final MinecraftChannelIdentifier MODERN = MinecraftChannelIdentifier

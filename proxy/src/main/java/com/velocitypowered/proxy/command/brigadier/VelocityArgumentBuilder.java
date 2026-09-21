@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.command.brigadier;
+package com.velocitypowered.proxy.command.brigadier;
 
 import com.google.common.base.Preconditions;
 import com.mojang.brigadier.arguments.ArgumentType;
@@ -23,7 +23,6 @@ import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
 import com.mojang.brigadier.tree.CommandNode;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * A builder for creating {@link VelocityArgumentCommandNode}s.
  *

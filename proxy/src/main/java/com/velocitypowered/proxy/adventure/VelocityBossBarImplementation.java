@@ -15,19 +15,18 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.adventure;
+package com.velocitypowered.proxy.adventure;
 
 import com.google.common.collect.MapMaker;
-import com.raytolfas.veloray.proxy.connection.client.ConnectedPlayer;
-import com.raytolfas.veloray.proxy.protocol.packet.BossBarPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.ComponentHolder;
+import com.velocitypowered.proxy.connection.client.ConnectedPlayer;
+import com.velocitypowered.proxy.protocol.packet.BossBarPacket;
+import com.velocitypowered.proxy.protocol.packet.chat.ComponentHolder;
 import java.util.Collections;
 import java.util.Set;
 import java.util.UUID;
 import net.kyori.adventure.bossbar.BossBar;
 import net.kyori.adventure.bossbar.BossBarImplementation;
 import net.kyori.adventure.text.Component;
-
 /**
  * Implementation of a {@link BossBarImplementation}.
  */

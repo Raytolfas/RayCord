@@ -15,12 +15,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.command.registrar;
+package com.velocitypowered.proxy.command.registrar;
 
 import com.google.common.base.Preconditions;
-import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContextBuilder;
 import com.mojang.brigadier.tree.ArgumentCommandNode;
 import com.mojang.brigadier.tree.LiteralCommandNode;
@@ -29,15 +29,14 @@ import com.velocitypowered.api.command.CommandInvocation;
 import com.velocitypowered.api.command.CommandMeta;
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.command.InvocableCommand;
-import com.raytolfas.veloray.proxy.command.VelocityCommandMeta;
-import com.raytolfas.veloray.proxy.command.VelocityCommands;
-import com.raytolfas.veloray.proxy.command.brigadier.VelocityArgumentBuilder;
-import com.raytolfas.veloray.proxy.command.brigadier.VelocityBrigadierCommandWrapper;
-import com.raytolfas.veloray.proxy.command.invocation.CommandInvocationFactory;
-import java.util.Iterator;
+import com.velocitypowered.proxy.command.brigadier.VelocityArgumentBuilder;
+import com.velocitypowered.proxy.command.brigadier.VelocityBrigadierCommandWrapper;
+import com.velocitypowered.proxy.command.invocation.CommandInvocationFactory;
+import com.velocitypowered.proxy.command.VelocityCommandMeta;
+import com.velocitypowered.proxy.command.VelocityCommands;
 import java.util.concurrent.locks.Lock;
 import java.util.function.Predicate;
-
+import java.util.Iterator;
 /**
  * Base class for {@link CommandRegistrar}s capable of registering a subinterface of
  * {@link InvocableCommand} in a root node.

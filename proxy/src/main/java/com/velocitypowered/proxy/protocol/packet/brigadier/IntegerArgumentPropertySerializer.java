@@ -15,12 +15,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet.brigadier;
+package com.velocitypowered.proxy.protocol.packet.brigadier;
 
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.velocitypowered.api.network.ProtocolVersion;
 import io.netty.buffer.ByteBuf;
-
 class IntegerArgumentPropertySerializer implements ArgumentPropertySerializer<IntegerArgumentType> {
 
   static final IntegerArgumentPropertySerializer INTEGER = new IntegerArgumentPropertySerializer();

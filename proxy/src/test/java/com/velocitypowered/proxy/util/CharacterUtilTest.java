@@ -15,25 +15,24 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.util;
+package com.velocitypowered.proxy.util;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
-
 class CharacterUtilTest {
 
   private static final String CHARACTERS = "!\\\"#$%&'()*+,-./0123456789:;<=>?"
-      + "@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\\\]^_'abcdefghijklmnopqrstuvwxyz¡«»";
-  private static final String NON_ASCII_CHARACTERS = "速度ъगꯀ▀";
+      + "@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\\\]^_'abcdefghijklmnopqrstuvwxyzР’РЋР’В«Р’В»";
+  private static final String NON_ASCII_CHARACTERS = "Р№Р‚СџРµС”В¦РЎР‰Р°В¤вЂ”РєР‡Р‚РІвЂ“Р‚";
 
   @Test
   void testCharacter() {
     assertTrue(CharacterUtil.isAllowedCharacter('a'));
     assertTrue(CharacterUtil.isAllowedCharacter(' '));
 
-    assertFalse(CharacterUtil.isAllowedCharacter('\u00A7')); // §
+    assertFalse(CharacterUtil.isAllowedCharacter('\u00A7')); // Р’В§
     assertFalse(CharacterUtil.isAllowedCharacter('\u007F')); // DEL
     assertFalse(CharacterUtil.isAllowedCharacter((char) 0));
   }
@@ -46,7 +45,7 @@ class CharacterUtilTest {
     assertFalse(CharacterUtil.containsIllegalCharacters(CHARACTERS));
     assertFalse(CharacterUtil.containsIllegalCharacters(NON_ASCII_CHARACTERS));
 
-    assertTrue(CharacterUtil.containsIllegalCharacters("§cVelocity"));
-    assertTrue(CharacterUtil.containsIllegalCharacters("§"));
+    assertTrue(CharacterUtil.containsIllegalCharacters("Р’В§cVelocity"));
+    assertTrue(CharacterUtil.containsIllegalCharacters("Р’В§"));
   }
 }

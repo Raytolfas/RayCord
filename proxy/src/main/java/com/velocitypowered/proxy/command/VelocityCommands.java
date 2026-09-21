@@ -15,11 +15,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.command;
+package com.velocitypowered.proxy.command;
 
 import com.google.common.base.Preconditions;
-import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.context.CommandContextBuilder;
 import com.mojang.brigadier.context.ParsedArgument;
@@ -32,13 +32,12 @@ import com.velocitypowered.api.command.Command;
 import com.velocitypowered.api.command.CommandManager;
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.command.InvocableCommand;
-import com.raytolfas.veloray.proxy.command.brigadier.VelocityArgumentCommandNode;
-import com.raytolfas.veloray.proxy.command.brigadier.VelocityBrigadierCommandWrapper;
+import com.velocitypowered.proxy.command.brigadier.VelocityArgumentCommandNode;
+import com.velocitypowered.proxy.command.brigadier.VelocityBrigadierCommandWrapper;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * Provides utility methods common to most {@link Command} implementations. In particular,
  * {@link InvocableCommand} implementations use the same logic for creating and parsing the alias

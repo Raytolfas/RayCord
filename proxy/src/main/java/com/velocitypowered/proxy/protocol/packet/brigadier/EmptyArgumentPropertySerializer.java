@@ -15,12 +15,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet.brigadier;
+package com.velocitypowered.proxy.protocol.packet.brigadier;
 
 import com.velocitypowered.api.network.ProtocolVersion;
 import io.netty.buffer.ByteBuf;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * An argument property serializer that will serialize and deserialize nothing.
  */

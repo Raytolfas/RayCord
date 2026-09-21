@@ -15,14 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.util.concurrent;
+package com.velocitypowered.proxy.util.concurrent;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import io.netty.util.concurrent.FastThreadLocalThread;
-import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
-
+import java.util.concurrent.ThreadFactory;
 /**
  * Factory to create threads for the Netty event loop groups.
  */

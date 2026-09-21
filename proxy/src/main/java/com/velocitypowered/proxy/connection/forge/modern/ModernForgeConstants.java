@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.forge.modern;
+package com.velocitypowered.proxy.connection.forge.modern;
 
 /**
  * Constants for use with Modern Forge systems.

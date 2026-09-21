@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.util.except;
+package com.velocitypowered.proxy.util.except;
 
 /**
  * A special-purpose exception thrown when we want to indicate an error but do not want to see a

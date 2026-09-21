@@ -15,14 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.player.bossbar;
+package com.velocitypowered.proxy.connection.player.bossbar;
 
-import com.raytolfas.veloray.proxy.adventure.VelocityBossBarImplementation;
-import com.raytolfas.veloray.proxy.connection.client.ConnectedPlayer;
-import com.raytolfas.veloray.proxy.protocol.packet.BossBarPacket;
+import com.velocitypowered.proxy.adventure.VelocityBossBarImplementation;
+import com.velocitypowered.proxy.connection.client.ConnectedPlayer;
+import com.velocitypowered.proxy.protocol.packet.BossBarPacket;
 import java.util.HashSet;
 import java.util.Set;
-
 /**
  * Handles dropping and resending boss bar packets on versions 1.20.2 and newer because the client now
  * deletes all boss bars during the login phase, and sending update packets would cause the client to be disconnected.

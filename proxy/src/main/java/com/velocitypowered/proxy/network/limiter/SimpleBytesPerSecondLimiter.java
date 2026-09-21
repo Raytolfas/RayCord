@@ -15,11 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.network.limiter;
+package com.velocitypowered.proxy.network.limiter;
 
-import com.raytolfas.veloray.proxy.util.IntervalledCounter;
+import com.velocitypowered.proxy.util.IntervalledCounter;
 import org.jspecify.annotations.Nullable;
-
 /**
  * A moving-window limiter over a configurable number of seconds.
  * It enforces both packets-per-second and average bytes-per-second limits.

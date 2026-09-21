@@ -15,15 +15,14 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.plugin.loader;
+package com.velocitypowered.proxy.plugin.loader;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.velocitypowered.api.plugin.PluginContainer;
 import com.velocitypowered.api.plugin.PluginDescription;
-import java.util.Optional;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
+import java.util.concurrent.ExecutorService;
+import java.util.Optional;
 /**
  * Implements {@link PluginContainer}.
  */

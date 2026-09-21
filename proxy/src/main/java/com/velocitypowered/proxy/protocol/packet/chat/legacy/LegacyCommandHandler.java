@@ -15,16 +15,14 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet.chat.legacy;
+package com.velocitypowered.proxy.protocol.packet.chat.legacy;
 
 import com.velocitypowered.api.event.command.CommandExecuteEvent;
-import com.raytolfas.veloray.proxy.VelocityServer;
-import com.raytolfas.veloray.proxy.connection.client.ConnectedPlayer;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.RateLimitedCommandHandler;
-
+import com.velocitypowered.proxy.connection.client.ConnectedPlayer;
+import com.velocitypowered.proxy.protocol.packet.chat.RateLimitedCommandHandler;
+import com.velocitypowered.proxy.VelocityServer;
 import java.time.Instant;
 import java.util.concurrent.CompletableFuture;
-
 public class LegacyCommandHandler extends RateLimitedCommandHandler<LegacyChatPacket> {
 
   private final ConnectedPlayer player;

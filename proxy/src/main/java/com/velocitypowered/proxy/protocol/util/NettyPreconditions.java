@@ -15,13 +15,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.util;
+package com.velocitypowered.proxy.protocol.util;
 
 import com.google.common.base.Strings;
-import com.raytolfas.veloray.proxy.protocol.netty.MinecraftDecoder;
-import com.raytolfas.veloray.proxy.util.except.QuietDecoderException;
+import com.velocitypowered.proxy.protocol.netty.MinecraftDecoder;
+import com.velocitypowered.proxy.util.except.QuietDecoderException;
 import io.netty.handler.codec.CorruptedFrameException;
-
 /**
  * Extends {@link com.google.common.base.Preconditions} for Netty's
  * {@link CorruptedFrameException}.

@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.util;
+package com.velocitypowered.proxy.protocol.util;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -25,7 +25,6 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.velocitypowered.api.util.Favicon;
 import java.lang.reflect.Type;
-
 /**
  * Serializes {@link Favicon} instances into JSON.
  */

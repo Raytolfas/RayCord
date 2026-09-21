@@ -15,15 +15,14 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.command.registrar;
+package com.velocitypowered.proxy.command.registrar;
 
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.tree.RootCommandNode;
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.command.RawCommand;
-import com.raytolfas.veloray.proxy.command.invocation.RawCommandInvocation;
+import com.velocitypowered.proxy.command.invocation.RawCommandInvocation;
 import java.util.concurrent.locks.Lock;
-
 /**
  * Registers {@link RawCommand}s in a root node.
  */

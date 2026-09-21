@@ -15,14 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.forge.modern;
+package com.velocitypowered.proxy.connection.forge.modern;
 
-import static com.raytolfas.veloray.proxy.connection.forge.modern.ModernForgeConstants.MODERN_FORGE_TOKEN;
+import static com.velocitypowered.proxy.connection.forge.modern.ModernForgeConstants.MODERN_FORGE_TOKEN;
 
-import com.raytolfas.veloray.proxy.connection.backend.BackendConnectionPhases;
-import com.raytolfas.veloray.proxy.connection.client.ClientConnectionPhases;
-import com.raytolfas.veloray.proxy.connection.util.ConnectionTypeImpl;
-
+import com.velocitypowered.proxy.connection.backend.BackendConnectionPhases;
+import com.velocitypowered.proxy.connection.client.ClientConnectionPhases;
+import com.velocitypowered.proxy.connection.util.ConnectionTypeImpl;
 /**
  * Contains extra logic.
  */

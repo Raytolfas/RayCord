@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.command;
+package com.velocitypowered.proxy.command;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -27,14 +27,13 @@ import static org.mockito.Mockito.when;
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.permission.Tristate;
 import com.velocitypowered.api.proxy.Player;
-import com.raytolfas.veloray.proxy.event.MockEventManager;
-import com.raytolfas.veloray.proxy.event.VelocityEventManager;
-import com.raytolfas.veloray.proxy.testutil.FakePluginManager;
+import com.velocitypowered.proxy.event.MockEventManager;
+import com.velocitypowered.proxy.event.VelocityEventManager;
+import com.velocitypowered.proxy.testutil.FakePluginManager;
 import java.util.Arrays;
 import java.util.Collection;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-
 abstract class CommandTestSuite {
 
   private static VelocityEventManager eventManager;

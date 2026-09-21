@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2026 VeloRay Contributors
+ * Copyright (C) 2026 Velocity Contributors
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.rcon;
+package com.velocitypowered.proxy.rcon;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -28,9 +28,8 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-
 /**
- * Minimal RCON client used by the built-in VeloRay command bridge.
+ * Minimal RCON client used by the built-in RayCord command bridge.
  */
 public final class RconClient {
 
@@ -42,6 +41,18 @@ public final class RconClient {
   private RconClient() {
   }
 
+  /**
+   * Executes a command on a backend server over RCON.
+   *
+   * @param host backend host
+   * @param port backend RCON port
+   * @param password backend RCON password
+   * @param connectTimeout socket connect timeout in milliseconds
+   * @param readTimeout socket read timeout in milliseconds
+   * @param command command to execute
+   * @return the RCON response payload
+   * @throws IOException if the connection, authentication, or command execution fails
+   */
   public static Result execute(
       String host,
       int port,
@@ -172,6 +183,11 @@ public final class RconClient {
     output.writeByte((value >>> 24) & 0xFF);
   }
 
+  /**
+   * Result of a completed RCON command execution.
+   *
+   * @param response response body returned by the backend
+   */
   public record Result(String response) {
   }
 

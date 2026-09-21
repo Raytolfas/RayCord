@@ -1,12 +1,19 @@
-# Velocity
+# RayCord
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/PaperMC/Velocity/gradle.yml)](https://papermc.io/downloads/velocity)
-[![Join our Discord](https://img.shields.io/discord/289587909051416579.svg?logo=discord&label=)](https://discord.gg/papermc)
+A next-generation Minecraft proxy based on Velocity, focused on powerful network tooling,
+scalability, and quality-of-life features for real server stacks.
 
-A Minecraft server proxy with unparalleled server support, scalability,
-and flexibility.
+RayCord is licensed under the GPLv3 license.
 
-Velocity is licensed under the GPLv3 license.
+## Highlights
+
+* Rebranded core proxy package: `com.velocitypowered.proxy`
+* Built-in `/raycord` root command
+* Built-in `/raycord modules` command for module status and hot reload
+* Built-in cross-server console bridge:
+  `/raycord cmd <server> <command>`
+* Extra RayCord configuration in `raycord.toml`
+* Built-in modules loaded from `config/modules`
 
 ## Goals
 
@@ -21,19 +28,72 @@ Velocity is licensed under the GPLv3 license.
   
 ## Building
 
-Velocity is built with [Gradle](https://gradle.org). We recommend using the
+RayCord is built with [Gradle](https://gradle.org). We recommend using the
 wrapper script (`./gradlew`) as our CI builds using it.
 
 It is sufficient to run `./gradlew build` to run the full build cycle.
 
 ## Running
 
-Once you've built Velocity, you can copy and run the `-all` JAR from
+Once you've built RayCord, you can copy and run the `-all` JAR from
 `proxy/build/libs`. Velocity will generate a default configuration file
 and you can configure it from there.
 
-Alternatively, you can get the proxy JAR from the [downloads](https://papermc.io/downloads/velocity)
-page.
+## Modules
+
+RayCord can load built-in modules from `config/modules`.
+
+Enable them in `raycord.toml`:
+
+```toml
+[modules]
+enabled = true
+motd = true
+antibot = true
+```
+
+Then edit:
+
+* `config/modules/motd.toml`
+* `config/modules/antibot.toml`
+
+Use `/raycord modules` to view the current module state, `/raycord modules reload`
+to hot reload them, or `/raycord modules preset <balanced|performance|secure>`
+to apply a bundled template.
+
+The MOTD module supports:
+
+* multiple MiniMessage lines
+* custom shown online and max players
+* custom hover sample text
+
+The anti-bot module currently provides:
+
+* IP flood detection with temporary bans
+* proxy-side post-login verification timeouts
+
+## Command Bridge
+
+RayCord ships with a built-in backend console bridge over RCON.
+
+1. Configure your backend servers in `velocity.toml` as usual.
+2. Add matching RCON credentials in `raycord.toml`.
+3. Use:
+   ` /raycord cmd survival say RayCord is online `
+
+Example `raycord.toml` section:
+
+```toml
+[command-bridge]
+enabled = true
+connect-timeout = 3000
+read-timeout = 3000
+
+[command-bridge.servers.survival]
+host = "127.0.0.1"
+port = 25575
+password = "change-me"
+```
 
 # Localisation
 

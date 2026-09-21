@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.command;
+package com.velocitypowered.proxy.command;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.word;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,10 +29,9 @@ import com.velocitypowered.api.command.Command;
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.command.RawCommand;
 import com.velocitypowered.api.command.SimpleCommand;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.List;
 import org.junit.jupiter.api.Test;
-
 /**
  * Tests {@link Command} implementation-independent suggestion methods of
  * {@link SuggestionsProvider}.

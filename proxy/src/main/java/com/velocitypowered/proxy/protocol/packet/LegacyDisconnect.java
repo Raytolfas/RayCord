@@ -15,16 +15,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet;
+package com.velocitypowered.proxy.protocol.packet;
 
 import com.google.common.collect.ImmutableList;
-import com.velocitypowered.api.proxy.server.ServerPing;
 import com.velocitypowered.api.proxy.server.ServerPing.Players;
-import com.raytolfas.veloray.proxy.protocol.packet.legacyping.LegacyMinecraftPingVersion;
-import net.kyori.adventure.text.TextComponent;
+import com.velocitypowered.api.proxy.server.ServerPing;
+import com.velocitypowered.proxy.protocol.packet.legacyping.LegacyMinecraftPingVersion;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
-
+import net.kyori.adventure.text.TextComponent;
 @SuppressWarnings("checkstyle:MissingJavadocType")
 public record LegacyDisconnect(String reason) {
 

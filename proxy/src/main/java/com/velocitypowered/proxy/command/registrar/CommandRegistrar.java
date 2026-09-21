@@ -15,13 +15,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.command.registrar;
+package com.velocitypowered.proxy.command.registrar;
 
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import com.mojang.brigadier.tree.RootCommandNode;
 import com.velocitypowered.api.command.Command;
 import com.velocitypowered.api.command.CommandMeta;
-
 /**
  * Creates and registers the {@link LiteralCommandNode} representations of a given {@link Command}
  * in a {@link RootCommandNode}.

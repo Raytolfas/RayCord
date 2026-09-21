@@ -15,12 +15,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.network;
+package com.velocitypowered.proxy.network;
 
 import com.google.common.base.Preconditions;
 import com.velocitypowered.api.network.ListenerType;
 import io.netty.channel.Channel;
-
 /**
  * Represents a listener endpoint.
  */

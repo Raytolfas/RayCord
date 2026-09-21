@@ -15,17 +15,16 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.command.invocation;
+package com.velocitypowered.proxy.command.invocation;
 
 import com.google.common.base.Preconditions;
 import com.mojang.brigadier.context.ParsedArgument;
 import com.mojang.brigadier.context.ParsedCommandNode;
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.command.RawCommand;
-import com.raytolfas.veloray.proxy.command.VelocityCommands;
+import com.velocitypowered.proxy.command.VelocityCommands;
 import java.util.List;
 import java.util.Map;
-
 /**
  * Implements {@link RawCommand.Invocation}.
  */

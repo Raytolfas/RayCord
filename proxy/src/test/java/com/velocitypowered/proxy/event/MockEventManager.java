@@ -15,10 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.event;
+package com.velocitypowered.proxy.event;
 
-import com.raytolfas.veloray.proxy.plugin.MockPluginManager;
-
+import com.velocitypowered.proxy.plugin.MockPluginManager;
 /**
  * A mock {@link VelocityEventManager}. Must be shutdown after use!
  */

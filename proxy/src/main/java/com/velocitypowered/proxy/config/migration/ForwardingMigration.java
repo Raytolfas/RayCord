@@ -15,16 +15,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.config.migration;
+package com.velocitypowered.proxy.config.migration;
 
-import static com.raytolfas.veloray.proxy.config.VelocityConfiguration.generateRandomString;
+import static com.velocitypowered.proxy.config.VelocityConfiguration.generateRandomString;
 
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import org.apache.logging.log4j.Logger;
-
 /**
  * Migrate old forwarding secret settings to modern version using an external file.
  */

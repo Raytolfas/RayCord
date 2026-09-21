@@ -15,10 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.util;
+package com.velocitypowered.proxy.util;
 
 import static java.util.Objects.requireNonNull;
-
 /**
  * Utils for easy handling of properties.
  *

@@ -15,50 +15,49 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.client;
+package com.velocitypowered.proxy.connection.client;
 
 import static com.google.common.net.UrlEscapers.urlFormParameterEscaper;
-import static com.raytolfas.veloray.proxy.VelocityServer.GENERAL_GSON;
-import static com.raytolfas.veloray.proxy.connection.VelocityConstants.EMPTY_BYTE_ARRAY;
-import static com.raytolfas.veloray.proxy.crypto.EncryptionUtils.decryptRsa;
-import static com.raytolfas.veloray.proxy.crypto.EncryptionUtils.generateServerId;
+import static com.velocitypowered.proxy.connection.VelocityConstants.EMPTY_BYTE_ARRAY;
+import static com.velocitypowered.proxy.crypto.EncryptionUtils.decryptRsa;
+import static com.velocitypowered.proxy.crypto.EncryptionUtils.generateServerId;
+import static com.velocitypowered.proxy.VelocityServer.GENERAL_GSON;
 
 import com.google.common.base.Preconditions;
 import com.google.common.primitives.Longs;
-import com.velocitypowered.api.event.connection.PreLoginEvent;
 import com.velocitypowered.api.event.connection.PreLoginEvent.PreLoginComponentResult;
+import com.velocitypowered.api.event.connection.PreLoginEvent;
 import com.velocitypowered.api.network.ProtocolVersion;
 import com.velocitypowered.api.proxy.crypto.IdentifiedKey;
 import com.velocitypowered.api.util.GameProfile;
-import com.raytolfas.veloray.proxy.VelocityServer;
-import com.raytolfas.veloray.proxy.connection.MinecraftConnection;
-import com.raytolfas.veloray.proxy.connection.MinecraftSessionHandler;
-import com.raytolfas.veloray.proxy.crypto.IdentifiedKeyImpl;
-import com.raytolfas.veloray.proxy.protocol.StateRegistry;
-import com.raytolfas.veloray.proxy.protocol.netty.MinecraftDecoder;
-import com.raytolfas.veloray.proxy.protocol.packet.EncryptionRequestPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.EncryptionResponsePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.LoginPluginResponsePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.ServerLoginPacket;
-import com.raytolfas.veloray.proxy.util.VelocityProperties;
+import com.velocitypowered.proxy.connection.MinecraftConnection;
+import com.velocitypowered.proxy.connection.MinecraftSessionHandler;
+import com.velocitypowered.proxy.crypto.IdentifiedKeyImpl;
+import com.velocitypowered.proxy.protocol.netty.MinecraftDecoder;
+import com.velocitypowered.proxy.protocol.packet.EncryptionRequestPacket;
+import com.velocitypowered.proxy.protocol.packet.EncryptionResponsePacket;
+import com.velocitypowered.proxy.protocol.packet.LoginPluginResponsePacket;
+import com.velocitypowered.proxy.protocol.packet.ServerLoginPacket;
+import com.velocitypowered.proxy.protocol.StateRegistry;
+import com.velocitypowered.proxy.util.VelocityProperties;
+import com.velocitypowered.proxy.VelocityServer;
 import io.netty.buffer.ByteBuf;
-import java.net.InetSocketAddress;
-import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.net.InetSocketAddress;
+import java.net.URI;
 import java.security.GeneralSecurityException;
 import java.security.KeyPair;
 import java.security.MessageDigest;
 import java.util.Arrays;
-import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.Optional;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
-
 /**
  * Handles authenticating the player to Mojang's servers.
  */

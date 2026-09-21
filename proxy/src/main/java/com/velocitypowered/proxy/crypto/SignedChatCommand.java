@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.crypto;
+package com.velocitypowered.proxy.crypto;
 
 import com.google.common.base.Preconditions;
 import com.velocitypowered.api.proxy.crypto.KeySigned;
@@ -24,7 +24,6 @@ import java.time.Instant;
 import java.util.Map;
 import java.util.UUID;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * Represents a signed chat command.
  */

@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.command.invocation;
+package com.velocitypowered.proxy.command.invocation;
 
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.context.CommandContextBuilder;
@@ -25,7 +25,6 @@ import com.velocitypowered.api.command.CommandInvocation;
 import com.velocitypowered.api.command.CommandSource;
 import java.util.List;
 import java.util.Map;
-
 /**
  * Creates command invocation objects from a command context builder or a command context.
  *

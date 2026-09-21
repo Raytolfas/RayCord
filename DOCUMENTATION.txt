@@ -1,0 +1,161 @@
+================================================================================
+                     RAYCORD PROXY — USER DOCUMENTATION
+================================================================================
+
+RayCord is an optimized Minecraft proxy server based on Velocity 3.5.0, 
+featuring built-in visual customization (MOTD), bot protection (AntiBot), and 
+an RCON command bridge.
+
+--------------------------------------------------------------------------------
+1. INSTALLATION & RUNNING
+--------------------------------------------------------------------------------
+1. Build the project using the command:
+   .\gradlew.bat :velocity-proxy:shadowJar
+2. Navigate to the root directory `build/libs/` and copy the 
+   `raycord-3.5.0-SNAPSHOT.jar` file to your server run directory.
+3. Start the server using the command:
+   java -jar raycord-3.5.0-SNAPSHOT.jar
+4. On first startup, the following default configuration files will be generated:
+   - velocity.toml (core Velocity settings)
+   - raycord.toml (additional RayCord settings)
+   - config/modules/motd.toml (server list customization)
+   - config/modules/antibot.toml (bot protection settings)
+
+--------------------------------------------------------------------------------
+2. COMMANDS & PERMISSIONS
+--------------------------------------------------------------------------------
+Root command: /raycord (aliases: /veloray, /velocity)
+
+* /raycord
+  Description: Displays a list of available subcommands.
+  
+* /raycord cmd <server> <command>
+  Description: Executes a console command on the backend server via RCON (do not include the leading slash `/`).
+  Permissions: raycord.command.cmd | veloray.command.cmd | velocity.command.cmd
+  
+* /raycord modules
+  Description: Shows the active preset and status of loaded modules.
+  Permissions: raycord.command.modules | veloray.command.modules | velocity.command.modules
+
+* /raycord modules reload
+  Description: Hot-reloads configuration files for modules (motd.toml, antibot.toml).
+  Permissions: raycord.command.modules | veloray.command.modules | velocity.command.modules
+
+* /raycord modules preset <balanced | performance | secure>
+  Description: Applies a bundled configuration template for AntiBot and MOTD.
+  Permissions: raycord.command.modules | veloray.command.modules | velocity.command.modules
+
+* Additional Velocity standard commands:
+  - /raycord reload (reloads the core velocity.toml configuration)
+  - /raycord info (displays version details)
+  - /raycord plugins (displays installed plugins)
+  - /raycord dump (creates a proxy state dump)
+  - /raycord heap (triggers a JVM heap dump)
+
+--------------------------------------------------------------------------------
+3. RAYCORD CONFIGURATION (raycord.toml)
+--------------------------------------------------------------------------------
+Main configuration file for additional features:
+
+[modules]
+enabled = true          # Master switch for all built-in modules
+motd = true             # Enable/disable the MOTD module
+antibot = true          # Enable/disable the AntiBot module
+preset = "balanced"     # Active configuration preset ("balanced", "performance", "secure")
+
+[command-bridge]
+enabled = false         # Enable/disable the RCON command bridge for /raycord cmd
+connect-timeout = 3000  # RCON socket connection timeout (ms)
+read-timeout = 3000     # RCON response read timeout (ms)
+
+[command-bridge.servers.<server_name>]
+# RCON settings per backend server (must match the server name in velocity.toml)
+host = "127.0.0.1"      # Server IP (optional, defaults to the server address in velocity.toml)
+port = 25575            # RCON port configured on the backend server
+password = "rcon_pass"  # RCON password
+
+--------------------------------------------------------------------------------
+4. MOTD MODULE (config/modules/motd.toml)
+--------------------------------------------------------------------------------
+Customizes the server's appearance in the multiplayer server list. Supports MiniMessage.
+
+Settings:
+* enabled = true
+  Enables this module.
+  
+* lines = [ "line 1", "line 2" ]
+  The lines displayed in the MOTD (maximum 2 lines). Supports HEX colors and gradients:
+  Example: "<gradient:#09add3:#8ae6ff><bold>RayCord</bold></gradient>"
+  
+* online = -1
+  Custom online player count. If set to -1, displays the real online count.
+  
+* max = -1
+  Custom max player limit. If set to -1, displays the real max player limit.
+  
+* null-players = false
+  If set to true, displays "???" instead of player counts.
+  
+* sample-players = [ "line 1", "line 2" ]
+  Custom text lines shown when hovering over the player count indicator.
+
+Placeholders (available for MOTD lines and hover samples):
+  %online%        - Real total online player count on the proxy.
+  %max%           - Real max player limit from configuration.
+  %shown_online%  - Displayed player count (including spoofed values).
+  %shown_max%     - Displayed max player limit (including spoofed values).
+  %version%       - Minecraft protocol version name.
+  %protocol%      - Minecraft protocol version ID.
+  %player%        - Username of the player querying (if sent from an authorized client).
+  %host%          - Virtual host domain/IP used by the client to connect.
+
+--------------------------------------------------------------------------------
+5. ANTIBOT MODULE (config/modules/antibot.toml)
+--------------------------------------------------------------------------------
+Protects the proxy against connection flood bot attacks.
+
+Settings:
+* enabled = true
+  Enables bot protection.
+  
+* max-connections-per-window = 5
+  Maximum allowed connection attempts from a single IP during the window.
+  
+* connection-window-seconds = 20
+  Duration of the connection tracking window (in seconds).
+  
+* ban-duration-seconds = 600
+  Duration of the temporary IP ban (in seconds) once the limit is exceeded.
+  
+* verification-timeout-seconds = 15
+  Allowed duration (in seconds) for a client to send its brand/settings packet after login.
+  If the client fails to send activity signals within this time, it is kicked.
+  
+* cleanup-interval-seconds = 1
+  Frequency of internal data cleanup cycles (in seconds).
+  
+* blocked-message = "<red>Message..."
+  Kick message displayed to blocked IP addresses.
+  Placeholders:
+    %seconds_left% - time remaining until the IP is unbanned.
+    %ip%           - client IP address.
+    
+* verification-timeout-message = "<red>Message..."
+  Kick message shown when verification fails or times out.
+  
+* log-actions = true
+  Enables/disables logging bans and kicks to the proxy console.
+
+--------------------------------------------------------------------------------
+6. SECURITY PRESETS
+--------------------------------------------------------------------------------
+Bundled configuration templates loaded from the core resources:
+
+1. Balanced:
+   Standard security thresholds and a balanced default MOTD. Recommended for daily use.
+2. Performance:
+   Optimized settings designed to minimize CPU footprint during bot checks.
+3. Secure:
+   Tightened rate limits (3 connections per 15s, 15-minute ban) and longer validation
+   windows. Ideal during active bot attacks.
+================================================================================

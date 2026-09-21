@@ -15,16 +15,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.adventure;
+package com.velocitypowered.proxy.adventure;
 
 import com.google.auto.service.AutoService;
-import com.raytolfas.veloray.proxy.util.TranslatableMapper;
+import com.velocitypowered.proxy.util.TranslatableMapper;
 import net.kyori.adventure.text.logger.slf4j.ComponentLogger;
 import net.kyori.adventure.text.logger.slf4j.ComponentLoggerProvider;
 import net.kyori.adventure.text.serializer.ansi.ANSIComponentSerializer;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.LoggerFactory;
-
 /**
  * Velocity ComponentLogger Provider.
  */

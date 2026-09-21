@@ -15,16 +15,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.util;
+package com.velocitypowered.proxy.connection.util;
 
-import com.velocitypowered.api.proxy.ConnectionRequestBuilder;
 import com.velocitypowered.api.proxy.ConnectionRequestBuilder.Status;
+import com.velocitypowered.api.proxy.ConnectionRequestBuilder;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
-import com.raytolfas.veloray.proxy.protocol.packet.DisconnectPacket;
+import com.velocitypowered.proxy.protocol.packet.DisconnectPacket;
 import java.util.Optional;
 import javax.annotation.Nullable;
 import net.kyori.adventure.text.Component;
-
 /**
  * Common connection request results.
  */

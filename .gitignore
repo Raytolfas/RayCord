@@ -1,40 +1,78 @@
-### Intellij ###
+# ========================
+#  RayCord — .gitignore
+# ========================
+
+# --- Gradle build output ---
+build/
+/build/
+**/build/
+out/
+/out/
+.gradle/
+.gradletasknamecache
+gradle-app.setting
+!gradle/wrapper/gradle-wrapper.jar
+
+# --- Kotlin Gradle plugin cache ---
+.kotlin/
+build-logic/.kotlin/
+
+# --- Velocity runtime files (generated on first run) ---
+velocity.toml
+raycord.toml
+veloray.toml
+forwarding.secret
+server-icon.png
+run/
+plugins/
+logs/
+lang/
+config/
+
+# --- IntelliJ IDEA ---
 .idea/
-*.iws
-*/out/
 *.iml
+*.iws
+*.ipr
 .idea_modules/
+out/
 atlassian-ide-plugin.xml
+
+# --- VS Code ---
+.vscode/
+
+# --- Fleet ---
 .fleet/
 
-### Eclipse ###
+# --- Eclipse ---
 .metadata
-bin/
-tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
 .settings/
+.classpath
+.project
 .loadpath
-.recommenders
+.recommenders/
+.factorypath
+.apt_generated/
 .externalToolBuilders/
 *.launch
-.factorypath
-.recommenders/
-.apt_generated/
-.project
-.classpath
 
-### Linux ###
-*~
-.fuse_hidden*
-.directory
-.Trash-*
-.nfs*
+# --- NetBeans ---
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
 
-### macOS ###
+# --- Windows ---
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# --- macOS ---
 .DS_Store
 .AppleDouble
 .LSOverride
@@ -49,51 +87,33 @@ Icon
 .com.apple.timemachine.donotpresent
 .AppleDB
 .AppleDesktop
-Network Trash Folder
-Temporary Items
 .apdisk
 
-### NetBeans ###
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
+# --- Linux ---
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
 
-### Windows ###
-# Windows thumbnail cache files
-Thumbs.db
-ehthumbs.db
-ehthumbs_vista.db
-*.stackdump
-[Dd]esktop.ini
-$RECYCLE.BIN/
-*.lnk
+# --- Misc ---
+*.tmp
+*.bak
+*.swp
+*.class
+*.jar
+*.war
+*.ear
 
-### Gradle ###
-.gradle
-/build/
-/out/
-gradle-app.setting
-!gradle-wrapper.jar
-.gradletasknamecache
-
-### Other trash ###
-logs/
-/velocity.toml
-/forwarding.secret
-forwarding.secret
-velocity.toml
-server-icon.png
-/bin/
-run/
-plugins/
-lang/
-
-### Natives stuff ###
-native/mbedtls
-native/zlib-ng
-native/zlib-cf
-native/libdeflate
+# --- Native dependencies (cloned externally) ---
+native/mbedtls/
+native/zlib-ng/
+native/zlib-cf/
+native/libdeflate/
 native/src/main/resources/linux_x86_64/velocity-cipher.so
+
+# --- Antigravity agent folder ---
+.agents/
+
+# --- Crowdin (not needed for general contributors) ---
+crowdin.yml

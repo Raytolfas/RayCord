@@ -15,10 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.util.ratelimit;
+package com.velocitypowered.proxy.util.ratelimit;
 
 import java.util.concurrent.TimeUnit;
-
 /**
  * Factory to create rate limiters.
  */

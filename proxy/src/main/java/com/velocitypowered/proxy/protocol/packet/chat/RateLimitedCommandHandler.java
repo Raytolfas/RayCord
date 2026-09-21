@@ -15,13 +15,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet.chat;
+package com.velocitypowered.proxy.protocol.packet.chat;
 
 import com.velocitypowered.api.proxy.Player;
-import com.raytolfas.veloray.proxy.VelocityServer;
-import com.raytolfas.veloray.proxy.protocol.MinecraftPacket;
+import com.velocitypowered.proxy.protocol.MinecraftPacket;
+import com.velocitypowered.proxy.VelocityServer;
 import net.kyori.adventure.text.Component;
-
 public abstract class RateLimitedCommandHandler<T extends MinecraftPacket> implements CommandHandler<T> {
 
     private final Player player;

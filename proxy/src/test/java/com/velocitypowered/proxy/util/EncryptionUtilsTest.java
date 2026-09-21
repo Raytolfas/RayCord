@@ -15,15 +15,14 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.util;
+package com.velocitypowered.proxy.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.raytolfas.veloray.proxy.crypto.EncryptionUtils;
+import com.velocitypowered.proxy.crypto.EncryptionUtils;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import org.junit.jupiter.api.Test;
-
 class EncryptionUtilsTest {
 
   @Test

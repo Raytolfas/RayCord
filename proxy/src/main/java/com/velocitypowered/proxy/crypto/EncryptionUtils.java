@@ -15,11 +15,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.crypto;
+package com.velocitypowered.proxy.crypto;
 
 import com.google.common.base.Preconditions;
 import com.google.common.io.ByteStreams;
-import com.raytolfas.veloray.proxy.util.except.QuietDecoderException;
+import com.velocitypowered.proxy.util.except.QuietDecoderException;
 import it.unimi.dsi.fastutil.Pair;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -38,7 +38,6 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 import javax.crypto.Cipher;
-
 /**
  * Generic utilities for dealing with encryption operations in Minecraft.
  */

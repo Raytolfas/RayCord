@@ -15,12 +15,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.command.invocation;
+package com.velocitypowered.proxy.command.invocation;
 
 import com.google.common.base.Preconditions;
 import com.velocitypowered.api.command.CommandInvocation;
 import com.velocitypowered.api.command.CommandSource;
-
 /**
  * Abstract base class for {@link CommandInvocation} implementations.
  *

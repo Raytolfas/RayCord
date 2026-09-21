@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol;
+package com.velocitypowered.proxy.protocol;
 
 /**
  * Describes various events fired during the course of a connection.

@@ -15,16 +15,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy;
+package com.velocitypowered.proxy;
 
-import com.raytolfas.veloray.proxy.util.VelocityProperties;
-import io.netty.util.ResourceLeakDetector;
+import com.velocitypowered.proxy.util.VelocityProperties;
 import io.netty.util.ResourceLeakDetector.Level;
+import io.netty.util.ResourceLeakDetector;
 import java.text.DecimalFormat;
 import java.util.concurrent.TimeUnit;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+import org.apache.logging.log4j.LogManager;
 /**
  * The main class. Responsible for parsing command line arguments and then launching the
  * proxy.

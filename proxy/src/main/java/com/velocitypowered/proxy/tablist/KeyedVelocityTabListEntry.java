@@ -15,18 +15,17 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.tablist;
+package com.velocitypowered.proxy.tablist;
 
 import com.velocitypowered.api.proxy.crypto.IdentifiedKey;
 import com.velocitypowered.api.proxy.player.ChatSession;
 import com.velocitypowered.api.proxy.player.TabList;
 import com.velocitypowered.api.proxy.player.TabListEntry;
 import com.velocitypowered.api.util.GameProfile;
-import com.raytolfas.veloray.proxy.protocol.packet.LegacyPlayerListItemPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.RemoteChatSession;
+import com.velocitypowered.proxy.protocol.packet.chat.RemoteChatSession;
+import com.velocitypowered.proxy.protocol.packet.LegacyPlayerListItemPacket;
 import java.util.Optional;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * Handles modern tab list entries.
  */

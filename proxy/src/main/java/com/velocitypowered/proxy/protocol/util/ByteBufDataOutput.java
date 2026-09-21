@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.util;
+package com.velocitypowered.proxy.protocol.util;
 
 import com.google.common.io.ByteArrayDataOutput;
 import io.netty.buffer.ByteBuf;
@@ -24,7 +24,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
-
 /**
  * A {@link ByteArrayDataOutput} equivalent to {@link ByteBufDataInput}.
  */

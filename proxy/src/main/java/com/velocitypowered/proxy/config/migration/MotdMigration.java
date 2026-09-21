@@ -15,14 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.config.migration;
+package com.velocitypowered.proxy.config.migration;
 
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.apache.logging.log4j.Logger;
-
 /**
  * Migrates MOTD builtin configuration from legacy or json format to MiniMessage.
  */
@@ -34,7 +33,7 @@ public final class MotdMigration implements ConfigurationMigration {
 
   @Override
   public void migrate(final CommentedFileConfig config, final Logger logger) {
-    final String oldMotd = config.getOrElse("motd", "<#09add3>A Velocity Server");
+    final String oldMotd = config.getOrElse("motd", "<#09add3>A RayCord Server");
     final String migratedMotd;
     // JSON Format Migration
     if (oldMotd.strip().startsWith("{")) {

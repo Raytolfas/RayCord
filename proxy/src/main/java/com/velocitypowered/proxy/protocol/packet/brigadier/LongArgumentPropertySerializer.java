@@ -15,16 +15,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet.brigadier;
+package com.velocitypowered.proxy.protocol.packet.brigadier;
 
-import static com.raytolfas.veloray.proxy.protocol.packet.brigadier.IntegerArgumentPropertySerializer.HAS_MAXIMUM;
-import static com.raytolfas.veloray.proxy.protocol.packet.brigadier.IntegerArgumentPropertySerializer.HAS_MINIMUM;
-import static com.raytolfas.veloray.proxy.protocol.packet.brigadier.IntegerArgumentPropertySerializer.getFlags;
+import static com.velocitypowered.proxy.protocol.packet.brigadier.IntegerArgumentPropertySerializer.getFlags;
+import static com.velocitypowered.proxy.protocol.packet.brigadier.IntegerArgumentPropertySerializer.HAS_MAXIMUM;
+import static com.velocitypowered.proxy.protocol.packet.brigadier.IntegerArgumentPropertySerializer.HAS_MINIMUM;
 
 import com.mojang.brigadier.arguments.LongArgumentType;
 import com.velocitypowered.api.network.ProtocolVersion;
 import io.netty.buffer.ByteBuf;
-
 class LongArgumentPropertySerializer implements ArgumentPropertySerializer<LongArgumentType> {
 
   static final LongArgumentPropertySerializer LONG = new LongArgumentPropertySerializer();

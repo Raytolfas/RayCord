@@ -15,22 +15,21 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.scheduler;
+package com.velocitypowered.proxy.scheduler;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.velocitypowered.api.scheduler.ScheduledTask;
 import com.velocitypowered.api.scheduler.TaskStatus;
-import com.raytolfas.veloray.proxy.scheduler.VelocityScheduler.VelocityTask;
-import com.raytolfas.veloray.proxy.testutil.FakePluginManager;
+import com.velocitypowered.proxy.scheduler.VelocityScheduler.VelocityTask;
+import com.velocitypowered.proxy.testutil.FakePluginManager;
 import java.time.Duration;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Test;
-
 class VelocitySchedulerTest {
 
   @Test

@@ -15,13 +15,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.plugin.loader;
+package com.velocitypowered.proxy.plugin.loader;
 
 import com.google.inject.Module;
 import com.velocitypowered.api.plugin.PluginContainer;
 import com.velocitypowered.api.plugin.PluginDescription;
 import java.nio.file.Path;
-
 /**
  * This interface is used for loading plugins.
  */

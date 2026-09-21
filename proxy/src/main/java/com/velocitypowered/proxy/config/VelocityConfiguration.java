@@ -15,24 +15,24 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.config;
+package com.velocitypowered.proxy.config;
 
 import com.electronwill.nightconfig.core.CommentedConfig;
-import com.electronwill.nightconfig.core.UnmodifiableConfig;
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
+import com.electronwill.nightconfig.core.UnmodifiableConfig;
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.annotations.Expose;
 import com.velocitypowered.api.proxy.config.ProxyConfig;
 import com.velocitypowered.api.util.Favicon;
-import com.raytolfas.veloray.proxy.config.migration.ConfigurationMigration;
-import com.raytolfas.veloray.proxy.config.migration.ForwardingMigration;
-import com.raytolfas.veloray.proxy.config.migration.KeyAuthenticationMigration;
-import com.raytolfas.veloray.proxy.config.migration.MiniMessageTranslationsMigration;
-import com.raytolfas.veloray.proxy.config.migration.MotdMigration;
-import com.raytolfas.veloray.proxy.config.migration.TransferIntegrationMigration;
-import com.raytolfas.veloray.proxy.util.AddressUtil;
+import com.velocitypowered.proxy.config.migration.ConfigurationMigration;
+import com.velocitypowered.proxy.config.migration.ForwardingMigration;
+import com.velocitypowered.proxy.config.migration.KeyAuthenticationMigration;
+import com.velocitypowered.proxy.config.migration.MiniMessageTranslationsMigration;
+import com.velocitypowered.proxy.config.migration.MotdMigration;
+import com.velocitypowered.proxy.config.migration.TransferIntegrationMigration;
+import com.velocitypowered.proxy.util.AddressUtil;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -48,11 +48,10 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * Velocity's configuration.
  */
@@ -63,7 +62,7 @@ public class VelocityConfiguration implements ProxyConfig {
   @Expose
   private String bind = "0.0.0.0:25565";
   @Expose
-  private String motd = "<aqua>A Velocity Server";
+  private String motd = "<aqua>A RayCord Server";
   @Expose
   private int showMaxPlayers = 500;
   @Expose
@@ -543,7 +542,7 @@ public class VelocityConfiguration implements ProxyConfig {
         }
       }
       final byte[] forwardingSecret = forwardingSecretString.getBytes(StandardCharsets.UTF_8);
-      final String motd = config.getOrElse("motd", "<#09add3>A Velocity Server");
+      final String motd = config.getOrElse("motd", "<#09add3>A RayCord Server");
 
       // Read the rest of the config
       final CommentedConfig serversConfig = config.get("servers");
@@ -933,7 +932,7 @@ public class VelocityConfiguration implements ProxyConfig {
     @Expose
     private int queryPort = 25565;
     @Expose
-    private String queryMap = "Velocity";
+    private String queryMap = "RayCord";
     @Expose
     private boolean showPlugins = false;
 
@@ -951,7 +950,7 @@ public class VelocityConfiguration implements ProxyConfig {
       if (config != null) {
         this.queryEnabled = config.getOrElse("enabled", false);
         this.queryPort = config.getIntOrElse("port", 25565);
-        this.queryMap = config.getOrElse("map", "Velocity");
+        this.queryMap = config.getOrElse("map", "RayCord");
         this.showPlugins = config.getOrElse("show-plugins", false);
       }
     }

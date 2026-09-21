@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.crypto;
+package com.velocitypowered.proxy.crypto;
 
 import com.google.common.base.Objects;
 import com.velocitypowered.api.proxy.crypto.IdentifiedKey;
@@ -28,7 +28,6 @@ import java.util.Arrays;
 import java.util.UUID;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * Represents the contents of a {@link IdentifiedKey}.
  */

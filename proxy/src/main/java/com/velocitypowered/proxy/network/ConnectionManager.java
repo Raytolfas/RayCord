@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.network;
+package com.velocitypowered.proxy.network;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.HashMultimap;
@@ -24,9 +24,9 @@ import com.velocitypowered.api.event.proxy.ListenerBoundEvent;
 import com.velocitypowered.api.event.proxy.ListenerCloseEvent;
 import com.velocitypowered.api.network.ListenerType;
 import com.velocitypowered.natives.util.Natives;
-import com.raytolfas.veloray.proxy.VelocityServer;
-import com.raytolfas.veloray.proxy.network.netty.SeparatePoolInetNameResolver;
-import com.raytolfas.veloray.proxy.protocol.netty.GameSpyQueryHandler;
+import com.velocitypowered.proxy.network.netty.SeparatePoolInetNameResolver;
+import com.velocitypowered.proxy.protocol.netty.GameSpyQueryHandler;
+import com.velocitypowered.proxy.VelocityServer;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
@@ -34,18 +34,17 @@ import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
-import io.netty.channel.WriteBufferWaterMark;
 import io.netty.channel.unix.UnixChannelOption;
+import io.netty.channel.WriteBufferWaterMark;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import io.netty.util.concurrent.MultithreadEventExecutorGroup;
-import java.net.InetSocketAddress;
 import java.net.http.HttpClient;
+import java.net.InetSocketAddress;
 import java.util.Collection;
 import java.util.Map;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * Manages endpoints managed by Velocity, along with initializing the Netty event loop group.
  */

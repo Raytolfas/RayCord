@@ -15,15 +15,14 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.adventure;
+package com.velocitypowered.proxy.adventure;
 
 import java.time.Duration;
 import java.util.concurrent.atomic.AtomicInteger;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.event.ClickCallback;
-import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
-
+import org.jspecify.annotations.NullMarked;
 @NullMarked
 record RegisteredCallback(
     Duration duration,

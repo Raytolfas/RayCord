@@ -15,10 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.util.collect;
+package com.velocitypowered.proxy.util.collect;
 
 import java.util.EnumSet;
-
 /**
  * An immutable map of {@link Enum} entries to {@code int}s.
  *

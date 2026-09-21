@@ -15,35 +15,34 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.network;
+package com.velocitypowered.proxy.network;
 
-import static com.raytolfas.veloray.proxy.network.Connections.FRAME_DECODER;
-import static com.raytolfas.veloray.proxy.network.Connections.FRAME_ENCODER;
-import static com.raytolfas.veloray.proxy.network.Connections.LEGACY_PING_DECODER;
-import static com.raytolfas.veloray.proxy.network.Connections.LEGACY_PING_ENCODER;
-import static com.raytolfas.veloray.proxy.network.Connections.MINECRAFT_DECODER;
-import static com.raytolfas.veloray.proxy.network.Connections.MINECRAFT_ENCODER;
-import static com.raytolfas.veloray.proxy.network.Connections.READ_TIMEOUT;
+import static com.velocitypowered.proxy.network.Connections.FRAME_DECODER;
+import static com.velocitypowered.proxy.network.Connections.FRAME_ENCODER;
+import static com.velocitypowered.proxy.network.Connections.LEGACY_PING_DECODER;
+import static com.velocitypowered.proxy.network.Connections.LEGACY_PING_ENCODER;
+import static com.velocitypowered.proxy.network.Connections.MINECRAFT_DECODER;
+import static com.velocitypowered.proxy.network.Connections.MINECRAFT_ENCODER;
+import static com.velocitypowered.proxy.network.Connections.READ_TIMEOUT;
 
-import com.raytolfas.veloray.proxy.VelocityServer;
-import com.raytolfas.veloray.proxy.config.VelocityConfiguration;
-import com.raytolfas.veloray.proxy.connection.MinecraftConnection;
-import com.raytolfas.veloray.proxy.connection.client.HandshakeSessionHandler;
-import com.raytolfas.veloray.proxy.network.limiter.SimpleBytesPerSecondLimiter;
-import com.raytolfas.veloray.proxy.protocol.ProtocolUtils;
-import com.raytolfas.veloray.proxy.protocol.StateRegistry;
-import com.raytolfas.veloray.proxy.protocol.netty.LegacyPingDecoder;
-import com.raytolfas.veloray.proxy.protocol.netty.LegacyPingEncoder;
-import com.raytolfas.veloray.proxy.protocol.netty.MinecraftDecoder;
-import com.raytolfas.veloray.proxy.protocol.netty.MinecraftEncoder;
-import com.raytolfas.veloray.proxy.protocol.netty.MinecraftVarintFrameDecoder;
-import com.raytolfas.veloray.proxy.protocol.netty.MinecraftVarintLengthEncoder;
+import com.velocitypowered.proxy.config.VelocityConfiguration;
+import com.velocitypowered.proxy.connection.client.HandshakeSessionHandler;
+import com.velocitypowered.proxy.connection.MinecraftConnection;
+import com.velocitypowered.proxy.network.limiter.SimpleBytesPerSecondLimiter;
+import com.velocitypowered.proxy.protocol.netty.LegacyPingDecoder;
+import com.velocitypowered.proxy.protocol.netty.LegacyPingEncoder;
+import com.velocitypowered.proxy.protocol.netty.MinecraftDecoder;
+import com.velocitypowered.proxy.protocol.netty.MinecraftEncoder;
+import com.velocitypowered.proxy.protocol.netty.MinecraftVarintFrameDecoder;
+import com.velocitypowered.proxy.protocol.netty.MinecraftVarintLengthEncoder;
+import com.velocitypowered.proxy.protocol.ProtocolUtils;
+import com.velocitypowered.proxy.protocol.StateRegistry;
+import com.velocitypowered.proxy.VelocityServer;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
 import io.netty.handler.codec.haproxy.HAProxyMessageDecoder;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import java.util.concurrent.TimeUnit;
-
 /**
  * Server channel initializer.
  */

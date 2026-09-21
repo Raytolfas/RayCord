@@ -15,19 +15,18 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.plugin.util;
+package com.velocitypowered.proxy.plugin.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.google.common.collect.ImmutableList;
-import com.velocitypowered.api.plugin.PluginDescription;
 import com.velocitypowered.api.plugin.meta.PluginDependency;
-import com.raytolfas.veloray.proxy.plugin.loader.VelocityPluginDescription;
+import com.velocitypowered.api.plugin.PluginDescription;
+import com.velocitypowered.proxy.plugin.loader.VelocityPluginDescription;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-
 class PluginDependencyUtilsTest {
 
   private static final PluginDescription NO_DEPENDENCY = testDescription("trivial");

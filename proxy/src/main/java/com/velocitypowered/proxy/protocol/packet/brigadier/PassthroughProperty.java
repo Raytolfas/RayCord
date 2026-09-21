@@ -15,12 +15,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet.brigadier;
+package com.velocitypowered.proxy.protocol.packet.brigadier;
 
-import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.StringReader;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 class PassthroughProperty<T> implements ArgumentType<T> {
 
   private final ArgumentIdentifier identifier;

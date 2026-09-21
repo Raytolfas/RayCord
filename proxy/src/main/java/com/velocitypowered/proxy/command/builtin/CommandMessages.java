@@ -15,12 +15,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.command.builtin;
+package com.velocitypowered.proxy.command.builtin;
 
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.TranslatableComponent;
 import net.kyori.adventure.text.format.NamedTextColor;
-
+import net.kyori.adventure.text.TranslatableComponent;
 /**
  * Basic, common command messages.
  */

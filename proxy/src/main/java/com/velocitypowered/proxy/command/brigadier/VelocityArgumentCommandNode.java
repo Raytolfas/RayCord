@@ -15,20 +15,20 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.command.brigadier;
+package com.velocitypowered.proxy.command.brigadier;
 
 import com.google.common.base.Preconditions;
-import com.mojang.brigadier.Command;
-import com.mojang.brigadier.ImmutableStringReader;
-import com.mojang.brigadier.RedirectModifier;
-import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.context.CommandContextBuilder;
 import com.mojang.brigadier.context.ParsedArgument;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.ImmutableStringReader;
+import com.mojang.brigadier.RedirectModifier;
+import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
@@ -38,7 +38,6 @@ import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
-
 /**
  * An argument node that uses the given (possibly custom) {@link ArgumentType} for parsing, while
  * maintaining compatibility with the vanilla client. The argument type must be greedy and accept

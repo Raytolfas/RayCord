@@ -15,14 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.tablist;
+package com.velocitypowered.proxy.tablist;
 
-import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.player.TabList;
-import com.raytolfas.veloray.proxy.protocol.packet.LegacyPlayerListItemPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.RemovePlayerInfoPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.UpsertPlayerInfoPacket;
-
+import com.velocitypowered.api.proxy.Player;
+import com.velocitypowered.proxy.protocol.packet.LegacyPlayerListItemPacket;
+import com.velocitypowered.proxy.protocol.packet.RemovePlayerInfoPacket;
+import com.velocitypowered.proxy.protocol.packet.UpsertPlayerInfoPacket;
 /**
  * Tab list interface with methods for handling player info packets.
  */

@@ -15,33 +15,32 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.backend;
+package com.velocitypowered.proxy.connection.backend;
 
-import static com.raytolfas.veloray.proxy.connection.backend.BackendConnectionPhases.IN_TRANSITION;
-import static com.raytolfas.veloray.proxy.connection.forge.legacy.LegacyForgeHandshakeBackendPhase.HELLO;
+import static com.velocitypowered.proxy.connection.backend.BackendConnectionPhases.IN_TRANSITION;
+import static com.velocitypowered.proxy.connection.forge.legacy.LegacyForgeHandshakeBackendPhase.HELLO;
 
 import com.velocitypowered.api.event.player.ServerConnectedEvent;
 import com.velocitypowered.api.event.player.ServerPostConnectEvent;
 import com.velocitypowered.api.network.ProtocolVersion;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
-import com.raytolfas.veloray.proxy.VelocityServer;
-import com.raytolfas.veloray.proxy.connection.ConnectionTypes;
-import com.raytolfas.veloray.proxy.connection.MinecraftConnection;
-import com.raytolfas.veloray.proxy.connection.MinecraftSessionHandler;
-import com.raytolfas.veloray.proxy.connection.client.ClientPlaySessionHandler;
-import com.raytolfas.veloray.proxy.connection.client.ConnectedPlayer;
-import com.raytolfas.veloray.proxy.connection.util.ConnectionMessages;
-import com.raytolfas.veloray.proxy.connection.util.ConnectionRequestResults;
-import com.raytolfas.veloray.proxy.connection.util.ConnectionRequestResults.Impl;
-import com.raytolfas.veloray.proxy.protocol.StateRegistry;
-import com.raytolfas.veloray.proxy.protocol.packet.DisconnectPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.JoinGamePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.KeepAlivePacket;
-import com.raytolfas.veloray.proxy.protocol.packet.PluginMessagePacket;
+import com.velocitypowered.proxy.connection.client.ClientPlaySessionHandler;
+import com.velocitypowered.proxy.connection.client.ConnectedPlayer;
+import com.velocitypowered.proxy.connection.ConnectionTypes;
+import com.velocitypowered.proxy.connection.MinecraftConnection;
+import com.velocitypowered.proxy.connection.MinecraftSessionHandler;
+import com.velocitypowered.proxy.connection.util.ConnectionMessages;
+import com.velocitypowered.proxy.connection.util.ConnectionRequestResults.Impl;
+import com.velocitypowered.proxy.connection.util.ConnectionRequestResults;
+import com.velocitypowered.proxy.protocol.packet.DisconnectPacket;
+import com.velocitypowered.proxy.protocol.packet.JoinGamePacket;
+import com.velocitypowered.proxy.protocol.packet.KeepAlivePacket;
+import com.velocitypowered.proxy.protocol.packet.PluginMessagePacket;
+import com.velocitypowered.proxy.protocol.StateRegistry;
+import com.velocitypowered.proxy.VelocityServer;
 import java.util.concurrent.CompletableFuture;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+import org.apache.logging.log4j.LogManager;
 /**
  * A special session handler that catches "last minute" disconnects.
  */

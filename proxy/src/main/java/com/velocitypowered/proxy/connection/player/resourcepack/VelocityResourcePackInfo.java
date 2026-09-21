@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.player.resourcepack;
+package com.velocitypowered.proxy.connection.player.resourcepack;
 
 import com.google.common.base.Preconditions;
 import com.velocitypowered.api.proxy.player.ResourcePackInfo;
@@ -27,7 +27,6 @@ import net.kyori.adventure.resource.ResourcePackRequest;
 import net.kyori.adventure.text.Component;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.jetbrains.annotations.NotNull;
-
 /**
  * Implements {@link ResourcePackInfo}.
  */

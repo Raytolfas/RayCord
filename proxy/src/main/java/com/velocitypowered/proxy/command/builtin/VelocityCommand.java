@@ -15,12 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.command.builtin;
+package com.velocitypowered.proxy.command.builtin;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.Command;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.tree.CommandNode;
@@ -33,8 +34,11 @@ import com.velocitypowered.api.plugin.PluginDescription;
 import com.velocitypowered.api.proxy.ProxyServer;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
 import com.velocitypowered.api.util.ProxyVersion;
-import com.raytolfas.veloray.proxy.VelocityServer;
-import com.raytolfas.veloray.proxy.util.InformationUtils;
+import com.velocitypowered.proxy.config.RayCordConfiguration;
+import com.velocitypowered.proxy.plugin.virtual.VelocityVirtualPlugin;
+import com.velocitypowered.proxy.rcon.RconClient;
+import com.velocitypowered.proxy.util.InformationUtils;
+import com.velocitypowered.proxy.VelocityServer;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.lang.invoke.MethodHandle;
@@ -49,31 +53,52 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.TextComponent;
-import net.kyori.adventure.text.TranslatableComponent;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.event.HoverEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.translation.Argument;
-import org.apache.logging.log4j.LogManager;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.TranslatableComponent;
 import org.apache.logging.log4j.Logger;
-
+import org.apache.logging.log4j.LogManager;
 /**
- * Implements the {@code /velocity} command and friends.
+ * Implements the {@code /raycord} command and friends.
  */
 public final class VelocityCommand {
-  private static final String USAGE = "/velocity <%s>";
+  private static final String USAGE = "/raycord <%s>";
+  private static final String SERVER_ARGUMENT = "server";
+  private static final String COMMAND_ARGUMENT = "command";
 
   @SuppressWarnings("checkstyle:MissingJavadocMethod")
   public static BrigadierCommand create(final VelocityServer server) {
+    final LiteralCommandNode<CommandSource> cmd = BrigadierCommand.literalArgumentBuilder("cmd")
+        .requires(source -> hasPermission(source, "cmd"))
+        .then(BrigadierCommand.requiredArgumentBuilder(SERVER_ARGUMENT, StringArgumentType.word())
+            .suggests((context, builder) -> {
+              final String argument = context.getArguments().containsKey(SERVER_ARGUMENT)
+                  ? context.getArgument(SERVER_ARGUMENT, String.class)
+                  : "";
+              for (final RegisteredServer registeredServer : server.getAllServers()) {
+                final String serverName = registeredServer.getServerInfo().getName();
+                if (serverName.regionMatches(true, 0, argument, 0, argument.length())) {
+                  builder.suggest(serverName);
+                }
+              }
+              return builder.buildFuture();
+            })
+            .then(BrigadierCommand.requiredArgumentBuilder(
+                COMMAND_ARGUMENT, StringArgumentType.greedyString())
+                .executes(new Cmd(server))))
+        .build();
     final LiteralCommandNode<CommandSource> dump = BrigadierCommand.literalArgumentBuilder("dump")
         .requires(source -> source.getPermissionValue("velocity.command.dump") == Tristate.TRUE)
         .executes(new Dump(server))
@@ -91,6 +116,27 @@ public final class VelocityCommand {
         .requires(source -> source.getPermissionValue("velocity.command.plugins") == Tristate.TRUE)
         .executes(new Plugins(server))
         .build();
+    final LiteralCommandNode<CommandSource> modules = BrigadierCommand
+        .literalArgumentBuilder("modules")
+        .requires(source -> hasPermission(source, "modules"))
+        .executes(new Modules(server))
+        .then(BrigadierCommand.literalArgumentBuilder("reload")
+            .requires(source -> hasPermission(source, "modules"))
+            .executes(new ModulesReload(server))
+        )
+        .then(BrigadierCommand.literalArgumentBuilder("preset")
+            .requires(source -> hasPermission(source, "modules"))
+            .then(BrigadierCommand.requiredArgumentBuilder("preset", StringArgumentType.word())
+                .suggests((context, builder) -> {
+                  for (RayCordConfiguration.Preset preset : RayCordConfiguration.Preset.values()) {
+                    builder.suggest(preset.id());
+                  }
+                  return builder.buildFuture();
+                })
+                .executes(new ModulesPreset(server))
+            )
+        )
+        .build();
     final LiteralCommandNode<CommandSource> reload = BrigadierCommand
         .literalArgumentBuilder("reload")
         .requires(source -> source.getPermissionValue("velocity.command.reload") == Tristate.TRUE)
@@ -98,11 +144,11 @@ public final class VelocityCommand {
         .build();
 
     final List<LiteralCommandNode<CommandSource>> commands = List
-            .of(dump, heap, info, plugins, reload);
+            .of(cmd, dump, heap, info, plugins, modules, reload);
     return new BrigadierCommand(
       commands.stream()
         .reduce(
-          BrigadierCommand.literalArgumentBuilder("velocity")
+          BrigadierCommand.literalArgumentBuilder("raycord")
             .executes(ctx -> {
               final CommandSource source = ctx.getSource();
               final String availableCommands = commands.stream()
@@ -121,6 +167,86 @@ public final class VelocityCommand {
           ArgumentBuilder::then
         )
     );
+  }
+
+  private static boolean hasPermission(CommandSource source, String command) {
+    return source.getPermissionValue("raycord.command." + command) == Tristate.TRUE
+        || source.getPermissionValue("veloray.command." + command) == Tristate.TRUE
+        || source.getPermissionValue("velocity.command." + command) == Tristate.TRUE;
+  }
+
+  private record Cmd(VelocityServer server) implements Command<CommandSource> {
+
+    @Override
+    public int run(CommandContext<CommandSource> context) {
+      final CommandSource source = context.getSource();
+      final String serverName = context.getArgument(SERVER_ARGUMENT, String.class);
+      final String rawCommand = context.getArgument(COMMAND_ARGUMENT, String.class).trim();
+
+      if (rawCommand.isEmpty()) {
+        source.sendMessage(Component.text("/raycord cmd <server> <command>", NamedTextColor.YELLOW));
+        return 0;
+      }
+
+      final Optional<RegisteredServer> maybeServer = server.getServer(serverName);
+      if (maybeServer.isEmpty()) {
+        source.sendMessage(Component.text(
+            "Server '" + serverName + "' is not registered on this proxy.",
+            NamedTextColor.RED));
+        return 0;
+      }
+
+      final RayCordConfiguration.CommandBridge bridge = server.getRayCordConfiguration()
+          .getCommandBridge();
+      if (!bridge.enabled()) {
+        source.sendMessage(Component.text(
+            "The RayCord command bridge is disabled. Enable it in raycord.toml.",
+            NamedTextColor.RED));
+        return 0;
+      }
+
+      final RayCordConfiguration.RconServer rconServer = bridge.servers().get(serverName);
+      if (rconServer == null) {
+        source.sendMessage(Component.text(
+            "No RCON settings were found for '" + serverName + "' in raycord.toml.",
+            NamedTextColor.RED));
+        return 0;
+      }
+
+      final String resolvedHost = rconServer.host() != null
+          ? rconServer.host()
+          : maybeServer.get().getServerInfo().getAddress().getHostString();
+      final String command = rawCommand.startsWith("/") ? rawCommand.substring(1) : rawCommand;
+
+      source.sendMessage(Component.text(
+          "Sending command to " + serverName + "...",
+          NamedTextColor.GRAY));
+
+      server.getScheduler().buildTask(VelocityVirtualPlugin.INSTANCE, () -> {
+        try {
+          final RconClient.Result result = RconClient.execute(
+              resolvedHost,
+              rconServer.port(),
+              rconServer.password(),
+              bridge.connectTimeout(),
+              bridge.readTimeout(),
+              command
+          );
+
+          source.sendMessage(Component.text(
+              "Command executed on " + serverName + ".",
+              NamedTextColor.GREEN));
+          if (!result.response().isBlank()) {
+            source.sendMessage(Component.text(result.response(), NamedTextColor.GRAY));
+          }
+        } catch (IOException e) {
+          source.sendMessage(Component.text(
+              "Failed to execute the command on " + serverName + ": " + e.getMessage(),
+              NamedTextColor.RED));
+        }
+      }).schedule();
+      return Command.SINGLE_SUCCESS;
+    }
   }
 
   private record Reload(VelocityServer server) implements Command<CommandSource> {
@@ -266,6 +392,101 @@ public final class VelocityCommand {
     }
   }
 
+  private record Modules(VelocityServer server) implements Command<CommandSource> {
+
+    @Override
+    public int run(final CommandContext<CommandSource> context) {
+      final CommandSource source = context.getSource();
+      final RayCordConfiguration.Modules modules = server.getRayCordConfiguration().getModules();
+      final List<String> activeModules = server.getActiveRayCordModules();
+
+      source.sendMessage(Component.text()
+          .content("RayCord modules")
+          .color(NamedTextColor.GOLD)
+          .build());
+      source.sendMessage(Component.text()
+          .content("Preset: " + modules.preset().displayName())
+          .color(NamedTextColor.GRAY)
+          .build());
+      source.sendMessage(Component.text()
+          .content("Use /raycord modules reload to hot reload these configs.")
+          .color(NamedTextColor.DARK_GRAY)
+          .build());
+      source.sendMessage(Component.text()
+          .content("Use /raycord modules preset <balanced|performance|secure> to apply a preset.")
+          .color(NamedTextColor.DARK_GRAY)
+          .build());
+
+      source.sendMessage(Component.text()
+          .content("Built-in modules: ")
+          .color(NamedTextColor.YELLOW)
+          .append(Component.text(String.join(", ", server.getBuiltInRayCordModules()),
+              NamedTextColor.WHITE))
+          .build());
+
+      source.sendMessage(Component.text()
+          .content("Active modules: ")
+          .color(NamedTextColor.YELLOW)
+          .append(Component.text(activeModules.isEmpty() ? "none" : String.join(", ", activeModules),
+              activeModules.isEmpty() ? NamedTextColor.RED : NamedTextColor.GREEN))
+          .build());
+      return Command.SINGLE_SUCCESS;
+    }
+  }
+
+  private record ModulesReload(VelocityServer server) implements Command<CommandSource> {
+
+    private static final Logger logger = LogManager.getLogger(ModulesReload.class);
+
+    @Override
+    public int run(final CommandContext<CommandSource> context) {
+      final CommandSource source = context.getSource();
+      try {
+        if (server.reloadRayCordModules()) {
+          source.sendMessage(Component.text("RayCord modules reloaded.", NamedTextColor.GREEN));
+        } else {
+          source.sendMessage(Component.text("RayCord modules could not be reloaded.",
+              NamedTextColor.RED));
+        }
+      } catch (Exception e) {
+        logger.error("Unable to reload RayCord modules", e);
+        source.sendMessage(Component.text("Unable to reload RayCord modules.",
+            NamedTextColor.RED));
+      }
+      return Command.SINGLE_SUCCESS;
+    }
+  }
+
+  private record ModulesPreset(VelocityServer server) implements Command<CommandSource> {
+
+    private static final Logger logger = LogManager.getLogger(ModulesPreset.class);
+
+    @Override
+    public int run(final CommandContext<CommandSource> context) {
+      final CommandSource source = context.getSource();
+      final String presetName = context.getArgument("preset", String.class);
+      final RayCordConfiguration.Preset preset = RayCordConfiguration.Preset.fromString(presetName);
+
+      try {
+        if (server.applyRayCordPreset(preset)) {
+          source.sendMessage(Component.text(
+              "Applied RayCord preset '" + preset.id() + "' and reloaded modules.",
+              NamedTextColor.GREEN));
+        } else {
+          source.sendMessage(Component.text(
+              "Applied preset files, but reload failed validation.",
+              NamedTextColor.RED));
+        }
+      } catch (Exception e) {
+        logger.error("Unable to apply RayCord preset {}", presetName, e);
+        source.sendMessage(Component.text(
+            "Unable to apply RayCord preset '" + presetName + "'.",
+            NamedTextColor.RED));
+      }
+      return Command.SINGLE_SUCCESS;
+    }
+  }
+
   private record Dump(ProxyServer server) implements Command<CommandSource> {
     private static final Logger logger = LogManager.getLogger(Dump.class);
 
@@ -299,7 +520,7 @@ public final class VelocityCommand {
       dump.add("config", proxyConfig);
       dump.add("plugins", InformationUtils.collectPluginInfo(server));
 
-      final Path dumpPath = Path.of("velocity-dump-"
+      final Path dumpPath = Path.of("raycord-dump-"
           + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date())
           + ".json");
       try (final BufferedWriter bw = Files.newBufferedWriter(

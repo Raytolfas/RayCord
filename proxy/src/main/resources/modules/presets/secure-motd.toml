@@ -1,0 +1,13 @@
+# RayCord MOTD module.
+
+enabled = true
+
+lines = [
+  "<gradient:#09add3:#8ae6ff><bold>RayCord</bold></gradient> <gray>- <white>secure preset",
+  "<gray>Network protection is active."
+]
+
+online = -1
+max = -1
+null-players = true
+sample-players = []

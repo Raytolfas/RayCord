@@ -15,20 +15,19 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.plugin.loader.java;
+package com.velocitypowered.proxy.plugin.loader.java;
 
 import com.google.inject.Binder;
 import com.google.inject.Module;
 import com.google.inject.Scopes;
+import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.plugin.PluginContainer;
 import com.velocitypowered.api.plugin.PluginDescription;
-import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import java.nio.file.Path;
 import java.util.concurrent.ExecutorService;
 import net.kyori.adventure.text.logger.slf4j.ComponentLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 class VelocityPluginModule implements Module {
 
   private final JavaVelocityPluginDescription description;

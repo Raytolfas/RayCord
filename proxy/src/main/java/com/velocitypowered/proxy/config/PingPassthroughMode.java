@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.config;
+package com.velocitypowered.proxy.config;
 
 /**
  * Supported passthrough modes for ping passthrough.

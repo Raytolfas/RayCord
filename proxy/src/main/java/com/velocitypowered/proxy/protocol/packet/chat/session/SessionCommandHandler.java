@@ -15,19 +15,17 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet.chat.session;
+package com.velocitypowered.proxy.protocol.packet.chat.session;
 
 import com.velocitypowered.api.event.command.CommandExecuteEvent;
-import com.raytolfas.veloray.proxy.VelocityServer;
-import com.raytolfas.veloray.proxy.connection.client.ConnectedPlayer;
-import com.raytolfas.veloray.proxy.protocol.MinecraftPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.ChatAcknowledgementPacket;
+import com.velocitypowered.proxy.connection.client.ConnectedPlayer;
+import com.velocitypowered.proxy.protocol.MinecraftPacket;
+import com.velocitypowered.proxy.protocol.packet.chat.ChatAcknowledgementPacket;
+import com.velocitypowered.proxy.protocol.packet.chat.RateLimitedCommandHandler;
+import com.velocitypowered.proxy.VelocityServer;
 import java.util.concurrent.CompletableFuture;
-
-import com.raytolfas.veloray.proxy.protocol.packet.chat.RateLimitedCommandHandler;
 import net.kyori.adventure.text.Component;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 public class SessionCommandHandler extends RateLimitedCommandHandler<SessionPlayerCommandPacket> {
 
   private final ConnectedPlayer player;

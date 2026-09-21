@@ -15,11 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.scheduler;
+package com.velocitypowered.proxy.scheduler;
 
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
-
 /**
  * Backend interface used by {@link VelocityScheduler} to schedule timer callbacks.
  *

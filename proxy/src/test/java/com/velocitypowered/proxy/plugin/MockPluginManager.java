@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.plugin;
+package com.velocitypowered.proxy.plugin;
 
 import com.google.common.collect.ImmutableList;
 import com.velocitypowered.api.plugin.PluginContainer;
@@ -23,7 +23,6 @@ import com.velocitypowered.api.plugin.PluginManager;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Optional;
-
 /**
  * Mock of {@link PluginManager}.
  */

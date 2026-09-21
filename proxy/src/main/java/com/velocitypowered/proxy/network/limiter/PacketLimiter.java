@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.network.limiter;
+package com.velocitypowered.proxy.network.limiter;
 
 /**
  * PacketLimiter enforces a limit on the number of bytes processed over a time window.

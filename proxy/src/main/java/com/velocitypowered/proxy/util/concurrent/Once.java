@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.util.concurrent;
+package com.velocitypowered.proxy.util.concurrent;
 
 /**
  * A class that guarantees that a given initialization shall only occur once. The implementation is

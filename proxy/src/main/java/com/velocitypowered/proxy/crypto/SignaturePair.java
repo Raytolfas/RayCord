@@ -15,11 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.crypto;
+package com.velocitypowered.proxy.crypto;
 
 import java.util.Arrays;
 import java.util.UUID;
-
 /**
  * Represents a signer and a signature.
  */

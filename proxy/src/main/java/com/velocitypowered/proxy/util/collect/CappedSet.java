@@ -15,14 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.util.collect;
+package com.velocitypowered.proxy.util.collect;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ForwardingSet;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-
 /**
  * An unsynchronized collection that puts an upper bound on the size of the collection.
  */

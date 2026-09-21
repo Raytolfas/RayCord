@@ -15,17 +15,16 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.plugin;
+package com.velocitypowered.proxy.plugin;
 
-import com.raytolfas.veloray.proxy.Velocity;
+import com.velocitypowered.proxy.Velocity;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Path;
-import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
-
+import java.util.Set;
 /**
  * The per-plugin class loader.
  */

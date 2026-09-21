@@ -15,13 +15,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.util;
+package com.velocitypowered.proxy.protocol.util;
 
 import com.google.common.io.ByteArrayDataInput;
 import io.netty.buffer.ByteBuf;
 import java.io.DataInputStream;
 import java.io.IOException;
-
 /**
  * A wrapper around {@link io.netty.buffer.ByteBuf} that implements the exception-free
  * {@link ByteArrayDataInput} interface from Guava.

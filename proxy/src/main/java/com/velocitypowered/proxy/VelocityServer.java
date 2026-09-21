@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy;
+package com.velocitypowered.proxy;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
@@ -31,96 +31,99 @@ import com.velocitypowered.api.network.ProtocolVersion;
 import com.velocitypowered.api.plugin.PluginContainer;
 import com.velocitypowered.api.plugin.PluginDescription;
 import com.velocitypowered.api.plugin.PluginManager;
+import com.velocitypowered.api.proxy.player.ResourcePackInfo;
 import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ProxyServer;
-import com.velocitypowered.api.proxy.player.ResourcePackInfo;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
 import com.velocitypowered.api.proxy.server.ServerInfo;
 import com.velocitypowered.api.util.Favicon;
 import com.velocitypowered.api.util.GameProfile;
 import com.velocitypowered.api.util.ProxyVersion;
-import com.raytolfas.veloray.proxy.command.VelocityCommandManager;
-import com.raytolfas.veloray.proxy.command.builtin.CallbackCommand;
-import com.raytolfas.veloray.proxy.command.builtin.GlistCommand;
-import com.raytolfas.veloray.proxy.command.builtin.SendCommand;
-import com.raytolfas.veloray.proxy.command.builtin.ServerCommand;
-import com.raytolfas.veloray.proxy.command.builtin.ShutdownCommand;
-import com.raytolfas.veloray.proxy.command.builtin.VelocityCommand;
-import com.raytolfas.veloray.proxy.config.VeloRayConfiguration;
-import com.raytolfas.veloray.proxy.config.VelocityConfiguration;
-import com.raytolfas.veloray.proxy.connection.client.ConnectedPlayer;
-import com.raytolfas.veloray.proxy.connection.player.resourcepack.VelocityResourcePackInfo;
-import com.raytolfas.veloray.proxy.connection.util.ServerListPingHandler;
-import com.raytolfas.veloray.proxy.console.VelocityConsole;
-import com.raytolfas.veloray.proxy.crypto.EncryptionUtils;
-import com.raytolfas.veloray.proxy.event.VelocityEventManager;
-import com.raytolfas.veloray.proxy.network.ConnectionManager;
-import com.raytolfas.veloray.proxy.plugin.VelocityPluginManager;
-import com.raytolfas.veloray.proxy.plugin.loader.VelocityPluginContainer;
-import com.raytolfas.veloray.proxy.plugin.loader.VelocityPluginDescription;
-import com.raytolfas.veloray.proxy.plugin.virtual.VelocityVirtualPlugin;
-import com.raytolfas.veloray.proxy.protocol.ProtocolUtils;
-import com.raytolfas.veloray.proxy.protocol.util.FaviconSerializer;
-import com.raytolfas.veloray.proxy.protocol.util.GameProfileSerializer;
-import com.raytolfas.veloray.proxy.scheduler.VelocityScheduler;
-import com.raytolfas.veloray.proxy.server.ServerMap;
-import com.raytolfas.veloray.proxy.util.AddressUtil;
-import com.raytolfas.veloray.proxy.util.ClosestLocaleMatcher;
-import com.raytolfas.veloray.proxy.util.ResourceUtils;
-import com.raytolfas.veloray.proxy.util.VelocityChannelRegistrar;
-import com.raytolfas.veloray.proxy.util.ratelimit.Ratelimiter;
-import com.raytolfas.veloray.proxy.util.ratelimit.Ratelimiters;
+import com.velocitypowered.proxy.command.builtin.CallbackCommand;
+import com.velocitypowered.proxy.command.builtin.GlistCommand;
+import com.velocitypowered.proxy.command.builtin.SendCommand;
+import com.velocitypowered.proxy.command.builtin.ServerCommand;
+import com.velocitypowered.proxy.command.builtin.ShutdownCommand;
+import com.velocitypowered.proxy.command.builtin.VelocityCommand;
+import com.velocitypowered.proxy.command.VelocityCommandManager;
+import com.velocitypowered.proxy.config.VelocityConfiguration;
+import com.velocitypowered.proxy.config.RayCordConfiguration;
+import com.velocitypowered.proxy.connection.client.ConnectedPlayer;
+import com.velocitypowered.proxy.connection.player.resourcepack.VelocityResourcePackInfo;
+import com.velocitypowered.proxy.connection.util.ServerListPingHandler;
+import com.velocitypowered.proxy.console.VelocityConsole;
+import com.velocitypowered.proxy.crypto.EncryptionUtils;
+import com.velocitypowered.proxy.event.VelocityEventManager;
+import com.velocitypowered.proxy.module.ModuleManager;
+import com.velocitypowered.proxy.network.ConnectionManager;
+import com.velocitypowered.proxy.plugin.loader.VelocityPluginContainer;
+import com.velocitypowered.proxy.plugin.loader.VelocityPluginDescription;
+import com.velocitypowered.proxy.plugin.VelocityPluginManager;
+import com.velocitypowered.proxy.plugin.virtual.VelocityVirtualPlugin;
+import com.velocitypowered.proxy.protocol.ProtocolUtils;
+import com.velocitypowered.proxy.protocol.util.FaviconSerializer;
+import com.velocitypowered.proxy.protocol.util.GameProfileSerializer;
+import com.velocitypowered.proxy.scheduler.VelocityScheduler;
+import com.velocitypowered.proxy.server.ServerMap;
+import com.velocitypowered.proxy.util.AddressUtil;
+import com.velocitypowered.proxy.util.ClosestLocaleMatcher;
+import com.velocitypowered.proxy.util.ratelimit.Ratelimiter;
+import com.velocitypowered.proxy.util.ratelimit.Ratelimiters;
+import com.velocitypowered.proxy.util.ResourceUtils;
+import com.velocitypowered.proxy.util.VelocityChannelRegistrar;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
-import java.io.IOException;
 import java.io.InputStream;
+import java.io.IOException;
+import java.net.http.HttpClient;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
-import java.net.http.HttpClient;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.KeyPair;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.TimeUnit;
 import java.util.function.IntFunction;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.UUID;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.audience.ForwardingAudience;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.translation.MiniMessageTranslationStore;
 import net.kyori.adventure.translation.GlobalTranslator;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.bstats.MetricsBase;
 import org.checkerframework.checker.nullness.qual.EnsuresNonNull;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
-
 /**
  * Implementation of {@link ProxyServer}.
  */
 public class VelocityServer implements ProxyServer, ForwardingAudience {
 
   public static final String VELOCITY_URL = "https://papermc.io/software/velocity";
+  private static final Path RAYCORD_CONFIG_PATH = Path.of("raycord.toml");
+  private static final Path LEGACY_VELORAY_CONFIG_PATH = Path.of("veloray.toml");
 
   private static final Logger logger = LogManager.getLogger(VelocityServer.class);
   public static final Gson GENERAL_GSON = new GsonBuilder()
@@ -157,7 +160,7 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
   private final ConnectionManager cm;
   private final ProxyOptions options;
   private @MonotonicNonNull VelocityConfiguration configuration;
-  private @MonotonicNonNull VeloRayConfiguration velorayConfiguration;
+  private @MonotonicNonNull RayCordConfiguration raycordConfiguration;
   private @MonotonicNonNull KeyPair serverKeyPair;
   private final ServerMap servers;
   private final VelocityCommandManager commandManager;
@@ -175,6 +178,7 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
   private final VelocityScheduler scheduler;
   private final VelocityChannelRegistrar channelRegistrar = new VelocityChannelRegistrar();
   private final ServerListPingHandler serverListPingHandler;
+  private final ModuleManager moduleManager;
 
   VelocityServer(final ProxyOptions options) {
     pluginManager = new VelocityPluginManager(this);
@@ -185,6 +189,7 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
     cm = new ConnectionManager(this);
     servers = new ServerMap(this);
     serverListPingHandler = new ServerListPingHandler(this);
+    moduleManager = new ModuleManager(this);
     this.options = options;
   }
 
@@ -204,13 +209,13 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
     String implVersion;
     String implVendor;
     if (pkg != null) {
-      implName = MoreObjects.firstNonNull(pkg.getImplementationTitle(), "Velocity");
+      implName = MoreObjects.firstNonNull(pkg.getImplementationTitle(), "RayCord");
       implVersion = MoreObjects.firstNonNull(pkg.getImplementationVersion(), "<unknown>");
-      implVendor = MoreObjects.firstNonNull(pkg.getImplementationVendor(), "VeloRay Contributors");
+      implVendor = MoreObjects.firstNonNull(pkg.getImplementationVendor(), "RayCord Contributors");
     } else {
-      implName = "VeloRay";
+      implName = "RayCord";
       implVersion = "<unknown>";
-      implVendor = "VeloRay Contributors";
+      implVendor = "RayCord Contributors";
     }
 
     return new ProxyVersion(implName, implVendor, implVersion);
@@ -219,8 +224,8 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
   private VelocityPluginContainer createVirtualPlugin() {
     ProxyVersion version = getVersion();
     PluginDescription description = new VelocityPluginDescription(
-        "veloray", version.getName(), version.getVersion(), "The VeloRay proxy",
-            version.getName().equals("Velocity") ? VELOCITY_URL : null,
+        "raycord", version.getName(), version.getVersion(), "The RayCord proxy",
+            null,
             ImmutableList.of(version.getVendor()), Collections.emptyList(), null);
     VelocityPluginContainer container = new VelocityPluginContainer(description);
     container.setInstance(VelocityVirtualPlugin.INSTANCE);
@@ -261,7 +266,7 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
     commandManager.register(
         commandManager.metaBuilder(velocityParentCommand)
             .plugin(VelocityVirtualPlugin.INSTANCE)
-            .aliases("velocity")
+            .aliases("velocity", "veloray")
             .build(),
         velocityParentCommand
     );
@@ -393,7 +398,6 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
           logger.error("Encountered an I/O error whilst loading translations", e);
         }
       }, "com", "velocitypowered", "proxy", "l10n");
-      }, "com", "raytolfas", "veloray", "proxy", "l10n");
     } catch (IOException e) {
       logger.error("Encountered an I/O error whilst loading translations", e);
       return;
@@ -401,30 +405,43 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
     GlobalTranslator.translator().addSource(translationRegistry);
   }
 
+  private Path resolveRayCordConfigPath() {
+    if (Files.exists(RAYCORD_CONFIG_PATH)) {
+      return RAYCORD_CONFIG_PATH;
+    }
+    if (Files.exists(LEGACY_VELORAY_CONFIG_PATH)) {
+      logger.info("Using legacy VeloRay config file '{}'. Rename it to '{}' when convenient.",
+          LEGACY_VELORAY_CONFIG_PATH, RAYCORD_CONFIG_PATH);
+      return LEGACY_VELORAY_CONFIG_PATH;
+    }
+    return RAYCORD_CONFIG_PATH;
+  }
+
   @SuppressFBWarnings("DM_EXIT")
   private void doStartupConfigLoad() {
     try {
       Path configPath = Path.of("velocity.toml");
-      Path velorayConfigPath = Path.of("veloray.toml");
+      Path raycordConfigPath = resolveRayCordConfigPath();
       configuration = VelocityConfiguration.read(configPath);
-      velorayConfiguration = VeloRayConfiguration.read(velorayConfigPath);
+      raycordConfiguration = RayCordConfiguration.read(raycordConfigPath);
 
       if (!configuration.validate()) {
-        logger.error("Your configuration is invalid. Velocity will not start up until the errors "
+        logger.error("Your configuration is invalid. RayCord will not start up until the errors "
             + "are resolved.");
         LogManager.shutdown();
         System.exit(1);
       }
-      if (!velorayConfiguration.validate()) {
-        logger.error("Your VeloRay configuration is invalid. VeloRay will not start up until the "
+      if (!raycordConfiguration.validate()) {
+        logger.error("Your RayCord configuration is invalid. RayCord will not start up until the "
             + "errors are resolved.");
         LogManager.shutdown();
         System.exit(1);
       }
 
       commandManager.setAnnounceProxyCommands(configuration.isAnnounceProxyCommands());
+      moduleManager.reload(raycordConfiguration);
     } catch (Exception e) {
-      logger.error("Unable to read/load/save your VeloRay configuration files. The server will "
+      logger.error("Unable to read/load/save your RayCord configuration files. The server will "
           + "shut down.", e);
       LogManager.shutdown();
       System.exit(1);
@@ -492,11 +509,11 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
    */
   public boolean reloadConfiguration() throws IOException {
     Path configPath = Path.of("velocity.toml");
-    Path velorayConfigPath = Path.of("veloray.toml");
+    Path raycordConfigPath = resolveRayCordConfigPath();
     VelocityConfiguration newConfiguration = VelocityConfiguration.read(configPath);
-    VeloRayConfiguration newVeloRayConfiguration = VeloRayConfiguration.read(velorayConfigPath);
+    RayCordConfiguration newRayCordConfiguration = RayCordConfiguration.read(raycordConfigPath);
 
-    if (!newConfiguration.validate() || !newVeloRayConfiguration.validate()) {
+    if (!newConfiguration.validate() || !newRayCordConfiguration.validate()) {
       return false;
     }
 
@@ -570,13 +587,65 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
     commandManager.setAnnounceProxyCommands(newConfiguration.isAnnounceProxyCommands());
     ipAttemptLimiter = Ratelimiters.createWithMilliseconds(newConfiguration.getLoginRatelimit());
     this.configuration = newConfiguration;
-    this.velorayConfiguration = newVeloRayConfiguration;
+    this.raycordConfiguration = newRayCordConfiguration;
+    moduleManager.reload(newRayCordConfiguration);
     eventManager.fireAndForget(new ProxyReloadEvent());
     return true;
   }
 
-  public VeloRayConfiguration getVeloRayConfiguration() {
-    return velorayConfiguration;
+  /**
+   * Reloads RayCord-only configuration and built-in modules without touching the main proxy
+   * configuration.
+   *
+   * @return {@code true} if successful, {@code false} if the RayCord configuration is invalid
+   * @throws IOException if we can't read {@code raycord.toml}
+   */
+  public boolean reloadRayCordModules() throws IOException {
+    RayCordConfiguration newRayCordConfiguration = RayCordConfiguration.read(resolveRayCordConfigPath());
+    if (!newRayCordConfiguration.validate()) {
+      return false;
+    }
+
+    this.raycordConfiguration = newRayCordConfiguration;
+    moduleManager.reload(newRayCordConfiguration);
+    eventManager.fireAndForget(new ProxyReloadEvent());
+    return true;
+  }
+
+  /**
+   * Applies a built-in RayCord preset, then reloads the RayCord configuration.
+   *
+   * @param preset the preset to apply
+   * @return {@code true} if successful, {@code false} if the RayCord configuration is invalid
+   * @throws IOException if a preset template could not be written or the config could not be read
+   */
+  public boolean applyRayCordPreset(RayCordConfiguration.Preset preset) throws IOException {
+    final Path raycordConfigPath = resolveRayCordConfigPath();
+    RayCordConfiguration.writePreset(raycordConfigPath, preset);
+    moduleManager.applyPreset(preset);
+    return reloadRayCordModules();
+  }
+
+  public RayCordConfiguration getRayCordConfiguration() {
+    return raycordConfiguration;
+  }
+
+  /**
+   * Returns the active built-in RayCord module identifiers.
+   *
+   * @return the module identifiers
+   */
+  public List<String> getActiveRayCordModules() {
+    return moduleManager.getActiveModuleIds();
+  }
+
+  /**
+   * Returns the built-in RayCord module identifiers.
+   *
+   * @return the module identifiers
+   */
+  public List<String> getBuiltInRayCordModules() {
+    return moduleManager.getBuiltInModuleIds();
   }
 
   /**
@@ -596,6 +665,7 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
 
     Runnable shutdownProcess = () -> {
       logger.info("Shutting down the proxy...");
+      moduleManager.shutdown();
 
       // Shutdown the connection manager, this should be
       // done first to refuse new connections
@@ -866,4 +936,36 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
       throw new IllegalStateException(
           "No configuration"); // even though you'll never get the chance... heh, heh
     }
-    return configurat
+    return configuration.getBind();
+  }
+
+  @Override
+  public @NonNull Iterable<? extends Audience> audiences() {
+    Collection<Audience> audiences = new ArrayList<>(this.getPlayerCount() + 1);
+    audiences.add(this.console);
+    audiences.addAll(this.getAllPlayers());
+    return audiences;
+  }
+
+  /**
+   * Returns a Gson instance for use in serializing server ping instances.
+   *
+   * @param version the protocol version in use
+   * @return the Gson instance
+   */
+  public static Gson getPingGsonInstance(ProtocolVersion version) {
+    if (version == ProtocolVersion.UNKNOWN
+        || version.noLessThan(ProtocolVersion.MINECRAFT_1_20_3)) {
+      return MODERN_PING_SERIALIZER;
+    }
+    if (version.noLessThan(ProtocolVersion.MINECRAFT_1_16)) {
+      return PRE_1_20_3_PING_SERIALIZER;
+    }
+    return PRE_1_16_PING_SERIALIZER;
+  }
+
+  @Override
+  public ResourcePackInfo.Builder createResourcePackBuilder(String url) {
+    return new VelocityResourcePackInfo.BuilderImpl(url);
+  }
+}

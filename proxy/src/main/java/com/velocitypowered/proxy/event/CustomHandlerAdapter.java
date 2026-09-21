@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.event;
+package com.velocitypowered.proxy.event;
 
 import com.google.common.reflect.TypeToken;
 import com.velocitypowered.api.event.EventHandler;
@@ -23,15 +23,14 @@ import com.velocitypowered.api.event.EventTask;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Method;
-import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.List;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.lanternpowered.lmbda.LambdaFactory;
 import org.lanternpowered.lmbda.LambdaType;
-
 final class CustomHandlerAdapter<F> {
 
   final String name;

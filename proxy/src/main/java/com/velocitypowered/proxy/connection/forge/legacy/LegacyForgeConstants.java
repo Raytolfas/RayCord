@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.connection.forge.legacy;
+package com.velocitypowered.proxy.connection.forge.legacy;
 
 /**
  * Constants for use with Legacy Forge systems.

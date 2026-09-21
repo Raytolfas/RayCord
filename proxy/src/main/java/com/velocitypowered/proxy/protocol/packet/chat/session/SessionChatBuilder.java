@@ -15,17 +15,16 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol.packet.chat.session;
+package com.velocitypowered.proxy.protocol.packet.chat.session;
 
 import com.velocitypowered.api.network.ProtocolVersion;
-import com.raytolfas.veloray.proxy.protocol.MinecraftPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.ChatType;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.ComponentHolder;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.LastSeenMessages;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.SystemChatPacket;
-import com.raytolfas.veloray.proxy.protocol.packet.chat.builder.ChatBuilderV2;
+import com.velocitypowered.proxy.protocol.MinecraftPacket;
+import com.velocitypowered.proxy.protocol.packet.chat.builder.ChatBuilderV2;
+import com.velocitypowered.proxy.protocol.packet.chat.ChatType;
+import com.velocitypowered.proxy.protocol.packet.chat.ComponentHolder;
+import com.velocitypowered.proxy.protocol.packet.chat.LastSeenMessages;
+import com.velocitypowered.proxy.protocol.packet.chat.SystemChatPacket;
 import net.kyori.adventure.text.Component;
-
 public class SessionChatBuilder extends ChatBuilderV2 {
 
   public SessionChatBuilder(ProtocolVersion version) {

@@ -15,9 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy;
+package com.velocitypowered.proxy;
 
-import com.raytolfas.veloray.proxy.config.VelocityConfiguration;
+import com.velocitypowered.proxy.config.VelocityConfiguration;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -25,16 +25,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.bstats.MetricsBase;
+import org.apache.logging.log4j.LogManager;
 import org.bstats.charts.CustomChart;
 import org.bstats.charts.DrilldownPie;
 import org.bstats.charts.SimplePie;
 import org.bstats.charts.SingleLineChart;
 import org.bstats.config.MetricsConfig;
 import org.bstats.json.JsonObjectBuilder;
-
+import org.bstats.MetricsBase;
 /**
  * Initializes bStats.
  */
@@ -71,7 +70,7 @@ public class Metrics {
 
     if (!config.didExistBefore()) {
       // Send an info message when the bStats config file gets created for the first time
-      logger.info("Velocity and some of its plugins collect metrics"
+      logger.info("RayCord and some of its plugins collect metrics"
           + " and send them to bStats (https://bStats.org).");
       logger.info("bStats collects some basic information for plugin"
           + " authors, like how many people use");

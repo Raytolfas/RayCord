@@ -15,9 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.raytolfas.veloray.proxy.protocol;
+package com.velocitypowered.proxy.protocol;
 
-import static com.raytolfas.veloray.proxy.protocol.ProtocolUtils.encode21BitVarInt;
+import static com.velocitypowered.proxy.protocol.ProtocolUtils.encode21BitVarInt;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -25,7 +25,6 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
 import io.netty.buffer.Unpooled;
 import org.junit.jupiter.api.Test;
-
 /**
  * Protocol utils test.
  */

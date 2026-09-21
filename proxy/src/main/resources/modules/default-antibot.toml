@@ -1,0 +1,21 @@
+# RayCord AntiBot module.
+
+enabled = true
+
+# If too many joins from one IP happen inside the window below,
+# the IP is blocked for ban-duration-seconds.
+max-connections-per-window = 5
+connection-window-seconds = 20
+ban-duration-seconds = 600
+
+# Proxy-side activity verification timeout after login.
+# This module currently verifies client activity signals that the proxy can safely observe.
+verification-timeout-seconds = 15
+
+# Internal cleanup cadence.
+cleanup-interval-seconds = 1
+
+blocked-message = "<red>Too many connections from your IP. Try again in %seconds_left%s."
+verification-timeout-message = "<red>Connection verification timed out."
+
+log-actions = true
